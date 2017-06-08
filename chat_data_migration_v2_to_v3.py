@@ -114,7 +114,7 @@ def get_chat_data_from_v2(page):
                         "\n", '')
         except Exception as e:
             data_error_row = list()
-            data_error_row.append(row["messageId"])
+            data_error_row.append(row["messageID"])
             data_error_row.append(str(e.message))
             data_error_row.append(str(row['body']))
             ws1.append(data_error_row)
