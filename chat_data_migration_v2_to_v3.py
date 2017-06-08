@@ -67,6 +67,8 @@ cur3.execute("SET character_set_connection=utf8mb4;")  # same as above
 # ============================================================end =================================
 
 pool = multiprocessing.Pool(processes=200 * multiprocessing.cpu_count())
+
+
 def get_chat_data_from_v2(page):
     start = (page - 1) * PAGINATION_LIMIT;
 
