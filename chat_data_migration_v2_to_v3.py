@@ -9,7 +9,7 @@ CHAT_TYPE_IMAGE_V2 = 'vImage'
 CHAT_TYPE_TEXT_V2 = 'vText'
 CHAT_TYPE_IMAGE_V3 = 'chat_image'
 CHAT_TYPE_TEXT_V3 = 'chat_text'
-PAGINATION_LIMIT = 200000
+PAGINATION_LIMIT = 500000
 page = None
 if sys.argv[1:]:
     page = sys.argv[1:][0]
@@ -100,6 +100,7 @@ def get_chat_data_from_v2(page):
                     create_v3_chat_obj['body'] = (dataBody['Post_Message']).encode("utf-8").encode('base64').replace(
                         "\n", '')
         except Exception as e:
+            print "error message :"+ e.message
             continue
 
         if create_v3_chat_obj and create_v3_chat_obj['body'] and create_v3_chat_obj["sender"] and create_v3_chat_obj[
