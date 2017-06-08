@@ -107,6 +107,7 @@ def get_chat_data_from_v2(page):
     con_v2.close()
     con_v3_chat.close()
     print "============================= script completed ==================================================="
+    exit()
 
 
 def insert_data_into_chat_database(data_v3_obj):
