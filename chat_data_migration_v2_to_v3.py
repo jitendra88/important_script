@@ -26,8 +26,6 @@ if page:
         print ("Page value only integer allowed")
         exit()
 
-
-
 # ---------------------------------- V3 ---------------------------------------------------
 con_v3 = mdb.connect('148.251.178.194', 'jitendra', 'jitendra', 'myu_v3_04052017');
 cur_3 = con_v3.cursor(mdb.cursors.DictCursor)
@@ -79,6 +77,7 @@ def get_chat_data_from_v2(page):
         "SELECT * FROM ofMessageArchive where fromJID='12830@ip-172-31-42-152'  AND messageID NOT IN  (SELECT message_id from deleted_messages) ORDER BY messageID DESC limit " + str(
             start) + " ," + str(PAGINATION_LIMIT) + "")
     print "================Total Message count In ofMessageArchive Table :===" + str(cur2.rowcount)
+
     for row in cur2.fetchall():
         create_v3_chat_obj = dict()
         try:
@@ -101,8 +100,10 @@ def get_chat_data_from_v2(page):
                     create_v3_chat_obj['body'] = (dataBody['Post_Message']).encode("utf-8").encode('base64').replace(
                         "\n", '')
         except Exception as e:
-            print e.message
-        if create_v3_chat_obj and create_v3_chat_obj['body'] and create_v3_chat_obj["sender"] and create_v3_chat_obj["receiver"]:
+            continue
+
+        if create_v3_chat_obj and create_v3_chat_obj['body'] and create_v3_chat_obj["sender"] and create_v3_chat_obj[
+            "receiver"]:
             pool.apply_async(insert_data_into_chat_database(create_v3_chat_obj))
     con_v2.close()
     con_v3_chat.close()
