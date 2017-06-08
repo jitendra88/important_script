@@ -100,7 +100,7 @@ def get_chat_data_from_v2(page):
                     create_v3_chat_obj['body'] = (dataBody['Post_Message']).encode("utf-8").encode('base64').replace(
                         "\n", '')
         except Exception as e:
-            print "error message :"+ e.message
+            print "error message :"+ str(e.message)
             continue
 
         if create_v3_chat_obj and create_v3_chat_obj['body'] and create_v3_chat_obj["sender"] and create_v3_chat_obj[
