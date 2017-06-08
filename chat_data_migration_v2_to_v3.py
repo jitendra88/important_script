@@ -97,7 +97,7 @@ def get_chat_data_from_v2(page):
     print "================Pagination Limit  :===" + str(PAGINATION_LIMIT)
 
     cur2.execute(
-        "SELECT * FROM ofMessageArchive where fromJID='12830@ip-172-31-42-152' AND messageID NOT IN  (SELECT message_id from deleted_messages) ORDER BY messageID DESC limit " + str(
+        "SELECT * FROM ofMessageArchive where  messageID NOT IN  (SELECT message_id from deleted_messages) ORDER BY messageID DESC limit " + str(
             start) + " ," + str(PAGINATION_LIMIT) + "")
     print "================Total Message count In ofMessageArchive Table :===" + str(cur2.rowcount)
 
@@ -120,30 +120,31 @@ def get_chat_data_from_v2(page):
                 data_error_row.append(toJID)
                 ws1.append(data_error_row)
                 continue
-            create_v3_chat_obj['from'] = user_obj[fromJID] + "@localhost"
-            create_v3_chat_obj['to'] = user_obj[toJID] + "@localhost"
-            create_v3_chat_obj['sender'] = user_obj[fromJID]
-            create_v3_chat_obj['receiver'] = user_obj[toJID]
-            create_v3_chat_obj['timestamp'] = str(row['sentDate']) + "000"
-            dataBody = loads(base64.b64decode(str(row['body']).encode("utf-8").replace("%2B", "+")))
-            if dataBody:
-                if dataBody['msg_id'] not in for_duplicate_msg_id:
-                    create_v3_chat_obj['msg_id'] = dataBody['msg_id']
-                    for_duplicate_msg_id[dataBody['msg_id']] = dataBody['msg_id']
-                    if dataBody['chat_type'] == CHAT_TYPE_IMAGE_V2:
-                        create_v3_chat_obj['chat_type'] = CHAT_TYPE_IMAGE_V3
-                        messageBody = dict()
-                        messageBody['s3MediaThumbnailUrl'] = dataBody['posted_thumbimage']
-                        messageBody['s3MediaUrl'] = dataBody['posted_image']
-                        create_v3_chat_obj['body'] = dumps(messageBody).encode("utf-8").encode("base64").replace("\n",
-                                                                                                                 '')
-                    elif dataBody['chat_type'] == CHAT_TYPE_TEXT_V2:
-                        create_v3_chat_obj['chat_type'] = CHAT_TYPE_TEXT_V3
-                        create_v3_chat_obj['body'] = (dataBody['Post_Message']).encode("utf-8").encode(
-                            'base64').replace(
-                            "\n", '')
-                else:
-                    duplicate_msg_id_list.append(for_duplicate_msg_id[dataBody['msg_id']])
+            else:
+                create_v3_chat_obj['from'] = user_obj[fromJID] + "@localhost"
+                create_v3_chat_obj['to'] = user_obj[toJID] + "@localhost"
+                create_v3_chat_obj['sender'] = user_obj[fromJID]
+                create_v3_chat_obj['receiver'] = user_obj[toJID]
+                create_v3_chat_obj['timestamp'] = str(row['sentDate']) + "000"
+                dataBody = loads(base64.b64decode(str(row['body']).encode("utf-8").replace("%2B", "+")))
+                if dataBody:
+                    if dataBody['msg_id'] not in for_duplicate_msg_id:
+                        create_v3_chat_obj['msg_id'] = dataBody['msg_id']
+                        for_duplicate_msg_id[dataBody['msg_id']] = dataBody['msg_id']
+                        if dataBody['chat_type'] == CHAT_TYPE_IMAGE_V2:
+                            create_v3_chat_obj['chat_type'] = CHAT_TYPE_IMAGE_V3
+                            messageBody = dict()
+                            messageBody['s3MediaThumbnailUrl'] = dataBody['posted_thumbimage']
+                            messageBody['s3MediaUrl'] = dataBody['posted_image']
+                            create_v3_chat_obj['body'] = dumps(messageBody).encode("utf-8").encode("base64").replace("\n",
+                                                                                                                     '')
+                        elif dataBody['chat_type'] == CHAT_TYPE_TEXT_V2:
+                            create_v3_chat_obj['chat_type'] = CHAT_TYPE_TEXT_V3
+                            create_v3_chat_obj['body'] = (dataBody['Post_Message']).encode("utf-8").encode(
+                                'base64').replace(
+                                "\n", '')
+                    else:
+                        duplicate_msg_id_list.append(for_duplicate_msg_id[dataBody['msg_id']])
 
         except Exception as e:
             data_error_row = list()
@@ -152,8 +153,7 @@ def get_chat_data_from_v2(page):
             data_error_row.append(str(row['body']))
             ws1.append(data_error_row)
             continue
-        if create_v3_chat_obj and create_v3_chat_obj['body'] and create_v3_chat_obj["sender"] and create_v3_chat_obj[
-            "receiver"]:
+        if 'body' in create_v3_chat_obj and 'sender' in create_v3_chat_obj and 'receiver' in create_v3_chat_obj:
             pool.apply_async(insert_data_into_chat_database(create_v3_chat_obj))
         else:
             data_error_row = list()
