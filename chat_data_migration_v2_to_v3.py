@@ -5,11 +5,24 @@ import multiprocessing
 import sys
 from json import loads, dumps
 
+from openpyxl.workbook import Workbook
+
+# ============================================ xlsx   error reporter ==============================================#
+header = [u'messageID', u'errorMessage', u'body']
+error_report_data = []
+wb = Workbook()
+dest_filename = 'error_report_chat_message.xlsx'
+ws1 = wb.active
+ws1.title = "errorMessage"
+ws1.append(header)
+
+# ================================ end ============================================================================#
+
 CHAT_TYPE_IMAGE_V2 = 'vImage'
 CHAT_TYPE_TEXT_V2 = 'vText'
 CHAT_TYPE_IMAGE_V3 = 'chat_image'
 CHAT_TYPE_TEXT_V3 = 'chat_text'
-PAGINATION_LIMIT = 1000000
+PAGINATION_LIMIT = 4000000
 page = None
 if sys.argv[1:]:
     page = sys.argv[1:][0]
@@ -64,7 +77,7 @@ cur3.execute("SET character_set_connection=utf8mb4;")  # same as above
 
 # ============================================================end =================================
 
-pool = multiprocessing.Pool(processes=250* multiprocessing.cpu_count())
+pool = multiprocessing.Pool(processes=250 * multiprocessing.cpu_count())
 
 
 def get_chat_data_from_v2(page):
@@ -100,16 +113,20 @@ def get_chat_data_from_v2(page):
                     create_v3_chat_obj['body'] = (dataBody['Post_Message']).encode("utf-8").encode('base64').replace(
                         "\n", '')
         except Exception as e:
-            print "Data Body :"+ str(str(row['body']))
-            print "error message :"+ str(e.message)
+            data_error_row = list()
+            data_error_row.append(row["messageId"])
+            data_error_row.append(str(e.message))
+            data_error_row.append(str(row['body']))
+            ws1.append(data_error_row)
             continue
-
         if create_v3_chat_obj and create_v3_chat_obj['body'] and create_v3_chat_obj["sender"] and create_v3_chat_obj[
             "receiver"]:
             pool.apply_async(insert_data_into_chat_database(create_v3_chat_obj))
     con_v2.close()
     con_v3_chat.close()
     print "============================= script completed ==================================================="
+    wb.save(filename=dest_filename)
+    print "============================= please check error report file ==========================================="
     exit()
 
 
