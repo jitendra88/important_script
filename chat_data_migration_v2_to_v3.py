@@ -7,6 +7,13 @@ from json import loads, dumps
 
 from openpyxl.workbook import Workbook
 
+# ============================================ global object ====================================================
+user_obj = {}
+for_duplicate_msg_id = {}
+duplicate_msg_id_list = []
+
+# =========================================================================================
+
 # ============================================ xlsx   error reporter ==============================================#
 header = [u'messageID', u'errorMessage', u'body']
 error_report_data = []
@@ -44,7 +51,7 @@ con_v3 = mdb.connect('148.251.178.194', 'jitendra', 'jitendra', 'myu_v3_04052017
 cur_3 = con_v3.cursor(mdb.cursors.DictCursor)
 
 cur_3.execute('SELECT id,idV2 FROM users WHERE  idV2 is NOT  NULL ')
-user_obj = {}
+
 print "===================use object creation started ................."
 for row in cur_3.fetchall():
     idV2 = str(row["idV2"])
@@ -101,17 +108,24 @@ def get_chat_data_from_v2(page):
             create_v3_chat_obj['timestamp'] = str(row['sentDate']) + "000"
             dataBody = loads(base64.b64decode(str(row['body']).encode("utf-8").replace("%2B", "+")))
             if dataBody:
-                create_v3_chat_obj['msg_id'] = dataBody['msg_id']
-                if dataBody['chat_type'] == CHAT_TYPE_IMAGE_V2:
-                    create_v3_chat_obj['chat_type'] = CHAT_TYPE_IMAGE_V3
-                    messageBody = dict()
-                    messageBody['s3MediaThumbnailUrl'] = dataBody['posted_thumbimage']
-                    messageBody['s3MediaUrl'] = dataBody['posted_image']
-                    create_v3_chat_obj['body'] = dumps(messageBody).encode("utf-8").encode("base64").replace("\n", '')
-                elif dataBody['chat_type'] == CHAT_TYPE_TEXT_V2:
-                    create_v3_chat_obj['chat_type'] = CHAT_TYPE_TEXT_V3
-                    create_v3_chat_obj['body'] = (dataBody['Post_Message']).encode("utf-8").encode('base64').replace(
-                        "\n", '')
+                if not for_duplicate_msg_id[dataBody['msg_id']]:
+                    create_v3_chat_obj['msg_id'] = dataBody['msg_id']
+                    for_duplicate_msg_id[dataBody['msg_id']] = dataBody['msg_id']
+                    if dataBody['chat_type'] == CHAT_TYPE_IMAGE_V2:
+                        create_v3_chat_obj['chat_type'] = CHAT_TYPE_IMAGE_V3
+                        messageBody = dict()
+                        messageBody['s3MediaThumbnailUrl'] = dataBody['posted_thumbimage']
+                        messageBody['s3MediaUrl'] = dataBody['posted_image']
+                        create_v3_chat_obj['body'] = dumps(messageBody).encode("utf-8").encode("base64").replace("\n",
+                                                                                                                 '')
+                    elif dataBody['chat_type'] == CHAT_TYPE_TEXT_V2:
+                        create_v3_chat_obj['chat_type'] = CHAT_TYPE_TEXT_V3
+                        create_v3_chat_obj['body'] = (dataBody['Post_Message']).encode("utf-8").encode(
+                            'base64').replace(
+                            "\n", '')
+                else:
+                    duplicate_msg_id_list.append(for_duplicate_msg_id["msg_id"])
+
         except Exception as e:
             data_error_row = list()
             data_error_row.append(row["messageID"])
@@ -122,12 +136,20 @@ def get_chat_data_from_v2(page):
         if create_v3_chat_obj and create_v3_chat_obj['body'] and create_v3_chat_obj["sender"] and create_v3_chat_obj[
             "receiver"]:
             pool.apply_async(insert_data_into_chat_database(create_v3_chat_obj))
+        else:
+            data_error_row = list()
+            data_error_row.append(row["messageID"])
+            data_error_row.append("Body data Null ")
+            data_error_row.append(str(row['body']))
+            ws1.append(data_error_row)
+
     con_v2.close()
     con_v3_chat.close()
+    print "============================= duplicate message count is :"+str(len(duplicate_msg_id_list))
     print "============================= script completed ==================================================="
     wb.save(filename=dest_filename)
     print "============================= please check error report file ==========================================="
-    exit()
+
 
 
 def insert_data_into_chat_database(data_v3_obj):
