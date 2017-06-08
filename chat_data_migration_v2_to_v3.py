@@ -168,6 +168,7 @@ def get_chat_data_from_v2(page):
     #print "============================= duplicate message count is :" + str(len(duplicate_msg_id_list))
     print "============================= script completed ==================================================="
     wb.save(filename=dest_filename)
+    pool.close()
     print "============================= please check error report file ==========================================="
     exit()
 
