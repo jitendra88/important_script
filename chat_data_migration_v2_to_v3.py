@@ -86,7 +86,7 @@ def get_chat_data_from_v2(page):
             create_v3_chat_obj['sender'] = user_obj[str(row['fromJID']).replace("@ip-172-31-42-152", '')]
             create_v3_chat_obj['receiver'] = user_obj[str(row['toJID']).replace("@ip-172-31-42-152", '')]
             create_v3_chat_obj['timestamp'] = str(row['sentDate']) + "000"
-            dataBody = loads((str(row['body']).decode("utf-8").decode("base64").replace("%2B", "+")))
+            dataBody = loads((str(row['body']).encode("utf-8").decode("base64").replace("%2B", "+")))
             if dataBody:
                 create_v3_chat_obj['msg_id'] = dataBody['msg_id']
                 if dataBody['chat_type'] == CHAT_TYPE_IMAGE_V2:
