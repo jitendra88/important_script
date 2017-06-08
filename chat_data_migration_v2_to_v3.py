@@ -86,8 +86,9 @@ cur3.execute("SET character_set_connection=utf8mb4;")  # same as above
 # ============================================================end =================================
 
 
-print "=================================Total no of process created .................."+str(TOTAL_NO_PROCESS)
+print "=================================Total no of process creation start .................."+str(TOTAL_NO_PROCESS)
 pool = multiprocessing.Pool(processes=TOTAL_NO_PROCESS * multiprocessing.cpu_count())
+print "=================================Process created  .................."+str(TOTAL_NO_PROCESS)
 
 
 def get_chat_data_from_v2(page):
