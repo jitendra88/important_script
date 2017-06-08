@@ -9,7 +9,7 @@ from openpyxl.workbook import Workbook
 
 # ============================================ global object ====================================================
 user_obj = {}
-for_duplicate_msg_id = {}
+
 duplicate_msg_id_list = []
 
 # =========================================================================================
@@ -29,7 +29,8 @@ CHAT_TYPE_IMAGE_V2 = 'vImage'
 CHAT_TYPE_TEXT_V2 = 'vText'
 CHAT_TYPE_IMAGE_V3 = 'chat_image'
 CHAT_TYPE_TEXT_V3 = 'chat_text'
-PAGINATION_LIMIT = 4000000
+PAGINATION_LIMIT = 10
+TOTAL_NO_PROCESS = 2
 page = None
 if sys.argv[1:]:
     page = sys.argv[1:][0]
@@ -84,31 +85,49 @@ cur3.execute("SET character_set_connection=utf8mb4;")  # same as above
 
 # ============================================================end =================================
 
-pool = multiprocessing.Pool(processes=250 * multiprocessing.cpu_count())
+
+print "=================================Total no of process created .................."+str(TOTAL_NO_PROCESS)
+pool = multiprocessing.Pool(processes=TOTAL_NO_PROCESS * multiprocessing.cpu_count())
 
 
 def get_chat_data_from_v2(page):
     start = (page - 1) * PAGINATION_LIMIT;
-
+    for_duplicate_msg_id = {}
     print "================page  :===" + str(page)
     print "================Pagination Limit  :===" + str(PAGINATION_LIMIT)
 
     cur2.execute(
-        "SELECT * FROM ofMessageArchive where  messageID NOT IN  (SELECT message_id from deleted_messages) ORDER BY messageID DESC limit " + str(
+        "SELECT * FROM ofMessageArchive where fromJID='12830@ip-172-31-42-152' AND messageID NOT IN  (SELECT message_id from deleted_messages) ORDER BY messageID DESC limit " + str(
             start) + " ," + str(PAGINATION_LIMIT) + "")
     print "================Total Message count In ofMessageArchive Table :===" + str(cur2.rowcount)
 
     for row in cur2.fetchall():
         create_v3_chat_obj = dict()
         try:
-            create_v3_chat_obj['from'] = user_obj[str(row['fromJID']).replace("@ip-172-31-42-152", '')] + "@localhost"
-            create_v3_chat_obj['to'] = user_obj[str(row['toJID']).replace("@ip-172-31-42-152", '')] + "@localhost"
-            create_v3_chat_obj['sender'] = user_obj[str(row['fromJID']).replace("@ip-172-31-42-152", '')]
-            create_v3_chat_obj['receiver'] = user_obj[str(row['toJID']).replace("@ip-172-31-42-152", '')]
+            fromJID = str(row['fromJID']).replace("@ip-172-31-42-152", '')
+            toJID = str(row['toJID']).replace("@ip-172-31-42-152", '')
+            if fromJID not in user_obj:
+                data_error_row = list()
+                data_error_row.append(row["messageID"])
+                data_error_row.append("fromJID UserId does exist in V3 database ")
+                data_error_row.append(toJID)
+                ws1.append(data_error_row)
+                continue
+            elif toJID not in user_obj:
+                data_error_row = list()
+                data_error_row.append(row["messageID"])
+                data_error_row.append("toJID  UserId does exist in V3 database ")
+                data_error_row.append(toJID)
+                ws1.append(data_error_row)
+                continue
+            create_v3_chat_obj['from'] = user_obj[fromJID] + "@localhost"
+            create_v3_chat_obj['to'] = user_obj[toJID] + "@localhost"
+            create_v3_chat_obj['sender'] = user_obj[fromJID]
+            create_v3_chat_obj['receiver'] = user_obj[toJID]
             create_v3_chat_obj['timestamp'] = str(row['sentDate']) + "000"
             dataBody = loads(base64.b64decode(str(row['body']).encode("utf-8").replace("%2B", "+")))
             if dataBody:
-                if not for_duplicate_msg_id[dataBody['msg_id']]:
+                if dataBody['msg_id'] not in for_duplicate_msg_id:
                     create_v3_chat_obj['msg_id'] = dataBody['msg_id']
                     for_duplicate_msg_id[dataBody['msg_id']] = dataBody['msg_id']
                     if dataBody['chat_type'] == CHAT_TYPE_IMAGE_V2:
@@ -124,7 +143,7 @@ def get_chat_data_from_v2(page):
                             'base64').replace(
                             "\n", '')
                 else:
-                    duplicate_msg_id_list.append(for_duplicate_msg_id["msg_id"])
+                    duplicate_msg_id_list.append(for_duplicate_msg_id[dataBody['msg_id']])
 
         except Exception as e:
             data_error_row = list()
@@ -145,11 +164,10 @@ def get_chat_data_from_v2(page):
 
     con_v2.close()
     con_v3_chat.close()
-    print "============================= duplicate message count is :"+str(len(duplicate_msg_id_list))
+    print "============================= duplicate message count is :" + str(len(duplicate_msg_id_list))
     print "============================= script completed ==================================================="
     wb.save(filename=dest_filename)
     print "============================= please check error report file ==========================================="
-
 
 
 def insert_data_into_chat_database(data_v3_obj):
