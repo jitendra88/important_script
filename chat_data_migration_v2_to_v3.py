@@ -30,7 +30,7 @@ CHAT_TYPE_TEXT_V2 = 'vText'
 CHAT_TYPE_IMAGE_V3 = 'chat_image'
 CHAT_TYPE_TEXT_V3 = 'chat_text'
 PAGINATION_LIMIT = 4000000
-TOTAL_NO_PROCESS = 250
+TOTAL_NO_PROCESS = 200
 page = None
 if sys.argv[1:]:
     page = sys.argv[1:][0]
@@ -98,7 +98,7 @@ def get_chat_data_from_v2(page):
     print "================Pagination Limit  :===" + str(PAGINATION_LIMIT)
 
     cur2.execute(
-        "SELECT * FROM ofMessageArchive where fromJID='12830@ip-172-31-42-152'  messageID NOT IN  (SELECT message_id from deleted_messages) ORDER BY messageID DESC limit " + str(
+        "SELECT * FROM ofMessageArchive where messageID NOT IN  (SELECT message_id from deleted_messages) ORDER BY messageID DESC limit " + str(
             start) + " ," + str(PAGINATION_LIMIT) + "")
     print "================Total Message count In ofMessageArchive Table :===" + str(cur2.rowcount)
 
