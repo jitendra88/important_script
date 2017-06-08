@@ -9,7 +9,7 @@ CHAT_TYPE_IMAGE_V2 = 'vImage'
 CHAT_TYPE_TEXT_V2 = 'vText'
 CHAT_TYPE_IMAGE_V3 = 'chat_image'
 CHAT_TYPE_TEXT_V3 = 'chat_text'
-PAGINATION_LIMIT = 500000
+PAGINATION_LIMIT = 200000
 page = None
 if sys.argv[1:]:
     page = sys.argv[1:][0]
@@ -64,7 +64,7 @@ cur3.execute("SET character_set_connection=utf8mb4;")  # same as above
 
 # ============================================================end =================================
 
-pool = multiprocessing.Pool(processes=1000 * multiprocessing.cpu_count())
+pool = multiprocessing.Pool(processes=500 * multiprocessing.cpu_count())
 
 
 def get_chat_data_from_v2(page):
