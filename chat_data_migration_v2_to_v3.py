@@ -144,7 +144,7 @@ def get_chat_data_from_v2(page):
                 if dataBody:
                     # if dataBody['msg_id'] not in for_duplicate_msg_id:
                         create_v3_chat_obj['msg_id'] = dataBody['msg_id']
-                        create_v3_chat_obj['timestamp'] = str(dataBody['post_timestamp']) + "000"
+                        create_v3_chat_obj['timestamp'] = str(dataBody['post_timestamp']) + "000000"
                         #for_duplicate_msg_id[dataBody['msg_id']] = dataBody['msg_id']
                         if dataBody['chat_type'] == CHAT_TYPE_IMAGE_V2:
                             create_v3_chat_obj['chat_type'] = CHAT_TYPE_IMAGE_V3
