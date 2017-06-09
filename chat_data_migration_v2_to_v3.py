@@ -42,8 +42,8 @@ CHAT_TYPE_IMAGE_V2 = 'vImage'
 CHAT_TYPE_TEXT_V2 = 'vText'
 CHAT_TYPE_IMAGE_V3 = 'chat_image'
 CHAT_TYPE_TEXT_V3 = 'chat_text'
-PAGINATION_LIMIT = 4000000
-TOTAL_NO_PROCESS = 250
+PAGINATION_LIMIT = 20
+TOTAL_NO_PROCESS = 1
 page = None
 if sys.argv[1:]:
     page = sys.argv[1:][0]
@@ -111,7 +111,7 @@ def get_chat_data_from_v2(page):
     print "================Pagination Limit  :===" + str(PAGINATION_LIMIT)
 
     cur2.execute(
-        "SELECT * FROM ofMessageArchive where fromJID ='12830@ip-172-31-42-152' OR toJID ='12830@ip-172-31-42-152' AND messageID NOT IN  (SELECT message_id from deleted_messages) ORDER BY messageID DESC limit " + str(
+        "SELECT * FROM ofMessageArchive where  fromJID ='12830@ip-172-31-42-152' OR toJID ='12830@ip-172-31-42-152' AND messageID NOT IN  (SELECT message_id from deleted_messages) ORDER BY messageID DESC limit " + str(
             start) + " ," + str(PAGINATION_LIMIT) + "")
     print "================Total Message count In ofMessageArchive Table :===" + str(cur2.rowcount)
 
@@ -143,9 +143,9 @@ def get_chat_data_from_v2(page):
                 create_v3_chat_obj['body'] = None
                 dataBody = loads(base64.b64decode(str(row['body']).encode("utf-8").replace("%2B", "+")))
                 if dataBody:
-                    if dataBody['msg_id'] not in for_duplicate_msg_id:
+                    # if dataBody['msg_id'] not in for_duplicate_msg_id:
                         create_v3_chat_obj['msg_id'] = dataBody['msg_id']
-                        for_duplicate_msg_id[dataBody['msg_id']] = dataBody['msg_id']
+                        #for_duplicate_msg_id[dataBody['msg_id']] = dataBody['msg_id']
                         if dataBody['chat_type'] == CHAT_TYPE_IMAGE_V2:
                             create_v3_chat_obj['chat_type'] = CHAT_TYPE_IMAGE_V3
                             messageBody = dict()
@@ -158,21 +158,21 @@ def get_chat_data_from_v2(page):
                             create_v3_chat_obj['body'] = (dataBody['Post_Message']).encode("utf-8").encode(
                                 'base64').replace(
                                 "\n", '')
-                    else:
-                        data_duplicate_msg_row = list()
-                        data_duplicate_msg_row.append(row["messageID"])
-                        data_duplicate_msg_row.append(create_v3_chat_obj['sender'])
-                        data_duplicate_msg_row.append(create_v3_chat_obj['receiver'])
-                        data_duplicate_msg_row.append(dataBody['msg_id'])
-                        if dataBody['chat_type'] == CHAT_TYPE_IMAGE_V2:
-                            data_duplicate_msg_row.append(CHAT_TYPE_IMAGE_V2)
-                            data_duplicate_msg_row.append(dataBody['posted_image'])
-                        elif dataBody['chat_type'] == CHAT_TYPE_TEXT_V2:
-                            data_duplicate_msg_row.append(CHAT_TYPE_TEXT_V2)
-                            data_duplicate_msg_row.append(dataBody['chat_msg'])
-                        ws2.append(data_duplicate_msg_row)
-                        duplicate_msg_id_list.append(for_duplicate_msg_id[dataBody['msg_id']])
-                        continue
+                    # else:
+                    #     data_duplicate_msg_row = list()
+                    #     data_duplicate_msg_row.append(row["messageID"])
+                    #     data_duplicate_msg_row.append(create_v3_chat_obj['sender'])
+                    #     data_duplicate_msg_row.append(create_v3_chat_obj['receiver'])
+                    #     data_duplicate_msg_row.append(dataBody['msg_id'])
+                    #     if dataBody['chat_type'] == CHAT_TYPE_IMAGE_V2:
+                    #         data_duplicate_msg_row.append(CHAT_TYPE_IMAGE_V2)
+                    #         data_duplicate_msg_row.append(dataBody['posted_image'])
+                    #     elif dataBody['chat_type'] == CHAT_TYPE_TEXT_V2:
+                    #         data_duplicate_msg_row.append(CHAT_TYPE_TEXT_V2)
+                    #         data_duplicate_msg_row.append(dataBody['chat_msg'])
+                    #     ws2.append(data_duplicate_msg_row)
+                    #     duplicate_msg_id_list.append(for_duplicate_msg_id[dataBody['msg_id']])
+                    #     continue
 
         except Exception as e:
             data_error_row = list()
