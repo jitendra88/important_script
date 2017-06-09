@@ -169,6 +169,7 @@ def get_chat_data_from_v2(page):
                         elif dataBody['chat_type'] == CHAT_TYPE_TEXT_V2:
                             data_duplicate_msg_row.append(CHAT_TYPE_TEXT_V2)
                             data_duplicate_msg_row.append(dataBody['Post_Message'])
+                        ws2.append(data_duplicate_msg_row)
                         duplicate_msg_id_list.append(for_duplicate_msg_id[dataBody['msg_id']])
 
         except Exception as e:
@@ -178,7 +179,7 @@ def get_chat_data_from_v2(page):
             data_error_row.append(str(row['body']))
             ws1.append(data_error_row)
             continue
-        if  create_v3_chat_obj is not None and 'body' in create_v3_chat_obj and 'sender' in create_v3_chat_obj and 'receiver' in create_v3_chat_obj:
+        if create_v3_chat_obj is not None and 'body' in create_v3_chat_obj and 'sender' in create_v3_chat_obj and 'receiver' in create_v3_chat_obj:
             pool.apply_async(insert_data_into_chat_database(create_v3_chat_obj))
         else:
             data_error_row = list()
@@ -189,7 +190,7 @@ def get_chat_data_from_v2(page):
 
     con_v2.close()
     con_v3_chat.close()
-    #print "============================= duplicate message count is :" + str(len(duplicate_msg_id_list))
+    print "============================= duplicate message count is :" + str(len(duplicate_msg_id_list))
     print "============================= script completed ==================================================="
     wb.save(filename=dest_filename)
     wb1.save(filename=dest_filename_message)
