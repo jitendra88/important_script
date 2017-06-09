@@ -142,7 +142,7 @@ def get_chat_data_from_v2(page):
                 create_v3_chat_obj['timestamp'] = str(row['sentDate']) + "000"
                 dataBody = loads(base64.b64decode(str(row['body']).encode("utf-8").replace("%2B", "+")))
                 if dataBody:
-                    if dataBody['msg_id'] not in for_duplicate_msg_id:
+                    #if dataBody['msg_id'] not in for_duplicate_msg_id:
                         create_v3_chat_obj['msg_id'] = dataBody['msg_id']
                         for_duplicate_msg_id[dataBody['msg_id']] = dataBody['msg_id']
                         if dataBody['chat_type'] == CHAT_TYPE_IMAGE_V2:
@@ -154,23 +154,24 @@ def get_chat_data_from_v2(page):
                                                                                                                      '')
                         elif dataBody['chat_type'] == CHAT_TYPE_TEXT_V2:
                             create_v3_chat_obj['chat_type'] = CHAT_TYPE_TEXT_V3
-                            create_v3_chat_obj['body'] = (dataBody['Post_Message']).encode("utf-8").encode(
+                            create_v3_chat_obj['body'] = (dataBody['chat_msg']).encode("utf-8").encode(
                                 'base64').replace(
                                 "\n", '')
-                    else:
-                        data_duplicate_msg_row = list()
-                        data_duplicate_msg_row.append(row["messageID"])
-                        data_duplicate_msg_row.append(create_v3_chat_obj['sender'])
-                        data_duplicate_msg_row.append(create_v3_chat_obj['receiver'])
-                        data_duplicate_msg_row.append(dataBody['msg_id'])
-                        if dataBody['chat_type'] == CHAT_TYPE_IMAGE_V2:
-                            data_duplicate_msg_row.append(CHAT_TYPE_IMAGE_V2)
-                            data_duplicate_msg_row.append(dataBody['posted_image'])
-                        elif dataBody['chat_type'] == CHAT_TYPE_TEXT_V2:
-                            data_duplicate_msg_row.append(CHAT_TYPE_TEXT_V2)
-                            data_duplicate_msg_row.append(dataBody['Post_Message'])
-                        ws2.append(data_duplicate_msg_row)
-                        duplicate_msg_id_list.append(for_duplicate_msg_id[dataBody['msg_id']])
+                    # else:
+                    #     data_duplicate_msg_row = list()
+                    #     data_duplicate_msg_row.append(row["messageID"])
+                    #     data_duplicate_msg_row.append(create_v3_chat_obj['sender'])
+                    #     data_duplicate_msg_row.append(create_v3_chat_obj['receiver'])
+                    #     data_duplicate_msg_row.append(dataBody['msg_id'])
+                    #     if dataBody['chat_type'] == CHAT_TYPE_IMAGE_V2:
+                    #         data_duplicate_msg_row.append(CHAT_TYPE_IMAGE_V2)
+                    #         data_duplicate_msg_row.append(dataBody['posted_image'])
+                    #     elif dataBody['chat_type'] == CHAT_TYPE_TEXT_V2:
+                    #         data_duplicate_msg_row.append(CHAT_TYPE_TEXT_V2)
+                    #         data_duplicate_msg_row.append(dataBody['chat_msg'])
+                    #     ws2.append(data_duplicate_msg_row)
+                    #     duplicate_msg_id_list.append(for_duplicate_msg_id[dataBody['msg_id']])
+                    #     continue
 
         except Exception as e:
             data_error_row = list()
@@ -187,13 +188,14 @@ def get_chat_data_from_v2(page):
             data_error_row.append("Body data Null ")
             data_error_row.append(str(row['body']))
             ws1.append(data_error_row)
+            continue
 
     con_v2.close()
     con_v3_chat.close()
-    print "============================= duplicate message count is :" + str(len(duplicate_msg_id_list))
+    #print "============================= duplicate message count is :" + str(len(duplicate_msg_id_list))
     print "============================= script completed ==================================================="
     wb.save(filename=dest_filename)
-    wb1.save(filename=dest_filename_message)
+    #wb1.save(filename=dest_filename_message)
     pool.close()
     print "============================= please check error report file ==========================================="
     exit()
