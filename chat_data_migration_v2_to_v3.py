@@ -34,7 +34,7 @@ wb1 = Workbook()
 dest_filename_message = 'duplicate_message_report.xlsx'
 ws2 = wb1.active
 ws2.title = "errorMessage"
-ws2.append(header)
+ws2.append(header_1)
 
 #======================================== END =====================================================================#
 
