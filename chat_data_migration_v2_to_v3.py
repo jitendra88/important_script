@@ -140,11 +140,12 @@ def get_chat_data_from_v2(page):
                 create_v3_chat_obj['sender'] = user_obj[fromJID]
                 create_v3_chat_obj['receiver'] = user_obj[toJID]
                 create_v3_chat_obj['timestamp'] = str(row['sentDate']) + "000"
+                create_v3_chat_obj['body'] = None
                 dataBody = loads(base64.b64decode(str(row['body']).encode("utf-8").replace("%2B", "+")))
                 if dataBody:
-                    #if dataBody['msg_id'] not in for_duplicate_msg_id:
+                    if dataBody['msg_id'] not in for_duplicate_msg_id:
                         create_v3_chat_obj['msg_id'] = dataBody['msg_id']
-                        #for_duplicate_msg_id[dataBody['msg_id']] = dataBody['msg_id']
+                        for_duplicate_msg_id[dataBody['msg_id']] = dataBody['msg_id']
                         if dataBody['chat_type'] == CHAT_TYPE_IMAGE_V2:
                             create_v3_chat_obj['chat_type'] = CHAT_TYPE_IMAGE_V3
                             messageBody = dict()
@@ -157,21 +158,21 @@ def get_chat_data_from_v2(page):
                             create_v3_chat_obj['body'] = (dataBody['Post_Message']).encode("utf-8").encode(
                                 'base64').replace(
                                 "\n", '')
-                    # else:
-                    #     data_duplicate_msg_row = list()
-                    #     data_duplicate_msg_row.append(row["messageID"])
-                    #     data_duplicate_msg_row.append(create_v3_chat_obj['sender'])
-                    #     data_duplicate_msg_row.append(create_v3_chat_obj['receiver'])
-                    #     data_duplicate_msg_row.append(dataBody['msg_id'])
-                    #     if dataBody['chat_type'] == CHAT_TYPE_IMAGE_V2:
-                    #         data_duplicate_msg_row.append(CHAT_TYPE_IMAGE_V2)
-                    #         data_duplicate_msg_row.append(dataBody['posted_image'])
-                    #     elif dataBody['chat_type'] == CHAT_TYPE_TEXT_V2:
-                    #         data_duplicate_msg_row.append(CHAT_TYPE_TEXT_V2)
-                    #         data_duplicate_msg_row.append(dataBody['chat_msg'])
-                    #     ws2.append(data_duplicate_msg_row)
-                    #     duplicate_msg_id_list.append(for_duplicate_msg_id[dataBody['msg_id']])
-                    #     continue
+                    else:
+                        data_duplicate_msg_row = list()
+                        data_duplicate_msg_row.append(row["messageID"])
+                        data_duplicate_msg_row.append(create_v3_chat_obj['sender'])
+                        data_duplicate_msg_row.append(create_v3_chat_obj['receiver'])
+                        data_duplicate_msg_row.append(dataBody['msg_id'])
+                        if dataBody['chat_type'] == CHAT_TYPE_IMAGE_V2:
+                            data_duplicate_msg_row.append(CHAT_TYPE_IMAGE_V2)
+                            data_duplicate_msg_row.append(dataBody['posted_image'])
+                        elif dataBody['chat_type'] == CHAT_TYPE_TEXT_V2:
+                            data_duplicate_msg_row.append(CHAT_TYPE_TEXT_V2)
+                            data_duplicate_msg_row.append(dataBody['chat_msg'])
+                        ws2.append(data_duplicate_msg_row)
+                        duplicate_msg_id_list.append(for_duplicate_msg_id[dataBody['msg_id']])
+                        continue
 
         except Exception as e:
             data_error_row = list()
@@ -180,7 +181,7 @@ def get_chat_data_from_v2(page):
             data_error_row.append(str(row['body']))
             ws1.append(data_error_row)
             continue
-        if create_v3_chat_obj is not None and 'body' in create_v3_chat_obj and 'sender' in create_v3_chat_obj and 'receiver' in create_v3_chat_obj:
+        if create_v3_chat_obj is not None and create_v3_chat_obj['body'] !=None and create_v3_chat_obj['body'] !='':
             pool.apply_async(insert_data_into_chat_database(create_v3_chat_obj))
         else:
             data_error_row = list()
