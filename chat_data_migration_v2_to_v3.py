@@ -144,7 +144,7 @@ def get_chat_data_from_v2(page):
                 if dataBody:
                     #if dataBody['msg_id'] not in for_duplicate_msg_id:
                         create_v3_chat_obj['msg_id'] = dataBody['msg_id']
-                        for_duplicate_msg_id[dataBody['msg_id']] = dataBody['msg_id']
+                        #for_duplicate_msg_id[dataBody['msg_id']] = dataBody['msg_id']
                         if dataBody['chat_type'] == CHAT_TYPE_IMAGE_V2:
                             create_v3_chat_obj['chat_type'] = CHAT_TYPE_IMAGE_V3
                             messageBody = dict()
@@ -154,7 +154,7 @@ def get_chat_data_from_v2(page):
                                                                                                                      '')
                         elif dataBody['chat_type'] == CHAT_TYPE_TEXT_V2:
                             create_v3_chat_obj['chat_type'] = CHAT_TYPE_TEXT_V3
-                            create_v3_chat_obj['body'] = (dataBody['chat_msg']).encode("utf-8").encode(
+                            create_v3_chat_obj['body'] = (dataBody['Post_Message']).encode("utf-8").encode(
                                 'base64').replace(
                                 "\n", '')
                     # else:
