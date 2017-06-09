@@ -139,12 +139,12 @@ def get_chat_data_from_v2(page):
                 create_v3_chat_obj['to'] = user_obj[toJID] + "@localhost"
                 create_v3_chat_obj['sender'] = user_obj[fromJID]
                 create_v3_chat_obj['receiver'] = user_obj[toJID]
-                create_v3_chat_obj['timestamp'] = str(row['sentDate']) + "000"
                 create_v3_chat_obj['body'] = None
                 dataBody = loads(base64.b64decode(str(row['body']).encode("utf-8").replace("%2B", "+")))
                 if dataBody:
                     # if dataBody['msg_id'] not in for_duplicate_msg_id:
                         create_v3_chat_obj['msg_id'] = dataBody['msg_id']
+                        create_v3_chat_obj['timestamp'] = str(dataBody['post_timestamp']) + "000"
                         #for_duplicate_msg_id[dataBody['msg_id']] = dataBody['msg_id']
                         if dataBody['chat_type'] == CHAT_TYPE_IMAGE_V2:
                             create_v3_chat_obj['chat_type'] = CHAT_TYPE_IMAGE_V3
