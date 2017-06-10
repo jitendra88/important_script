@@ -101,7 +101,7 @@ def save_follow_data(page):
             create_v3_chat_obj['followerUserId'] = str(followerUserId)
             create_v3_chat_obj['followedUserId'] = str(followedUserId)
             create_v3_chat_obj['idV2'] = str(idV2)
-            saveFollowUser(create_v3_chat_obj)
+            pool.apply_async(saveFollowUser(create_v3_chat_obj))
         except Exception as e:
             data_error_row = list()
             data_error_row.append(row["id"])
