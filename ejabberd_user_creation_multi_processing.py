@@ -44,7 +44,7 @@ if page:
 
 def ejabberd_user_register(page):
     start = (page - 1) * PAGINATION_LIMIT;
-    cur.execute("SELECT id,name FROM users ORDER BY id ASC limit " + str(
+    cur.execute("SELECT id,name FROM users ORDER BY id DESC limit " + str(
         start) + " ," + str(PAGINATION_LIMIT) + "")
 
     for row in cur.fetchall():
