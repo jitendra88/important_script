@@ -41,7 +41,7 @@ CHAT_TYPE_IMAGE_V2 = 'vImage'
 CHAT_TYPE_TEXT_V2 = 'vText'
 CHAT_TYPE_IMAGE_V3 = 'chat_image'
 CHAT_TYPE_TEXT_V3 = 'chat_text'
-PAGINATION_LIMIT = 10000
+PAGINATION_LIMIT = 100000
 TOTAL_NO_PROCESS = 1
 page = None
 if sys.argv[1:]:
@@ -78,7 +78,7 @@ print "=======================end======================"
 
 
 # ==================================== V2 database ================================================
-con_v2 = mdb.connect('php-beta.c03pbdmxnxpo.eu-west-1.rds.amazonaws.com', 'root', 'admin123*', 'myu')
+con_v2 = mdb.connect('chat.c03pbdmxnxpo.eu-west-1.rds.amazonaws.com', 'myudb_v2_read', 'myudb_v2_read!@#123*', 'myu')
 cur2 = con_v2.cursor(mdb.cursors.DictCursor)
 cur2.execute("SET NAMES utf8mb4;")  # or utf8 or any other charset you want to handle
 
@@ -105,6 +105,8 @@ print "=================================Process created  .................."+str
 
 def get_chat_data_from_v2(page):
     start = (page - 1) * PAGINATION_LIMIT;
+    counter  = 0
+    commit = False;
 
     print "================page  :===" + str(page)
     print "================Pagination Limit  :===" + str(PAGINATION_LIMIT)
@@ -115,7 +117,9 @@ def get_chat_data_from_v2(page):
     print "================Total Message count In ofMessageArchive Table :===" + str(cur2.rowcount)
 
     for row in cur2.fetchall():
+        counter = counter + 1
         create_v3_chat_obj = dict()
+
         try:
             fromJID = str(row['fromJID']).replace("@ip-172-31-42-152", '')
             toJID = str(row['toJID']).replace("@ip-172-31-42-152", '')
@@ -157,6 +161,7 @@ def get_chat_data_from_v2(page):
                             create_v3_chat_obj['body'] = (dataBody['Post_Message']).encode("utf-8").encode(
                                 'base64').replace(
                                 "\n", '')
+
                     # else:
                     #     data_duplicate_msg_row = list()
                     #     data_duplicate_msg_row.append(row["messageID"])
@@ -181,7 +186,9 @@ def get_chat_data_from_v2(page):
             ws1.append(data_error_row)
             continue
         if create_v3_chat_obj is not None and create_v3_chat_obj['body'] !=None and create_v3_chat_obj['body'] !='':
-            pool.apply_async(insert_data_into_chat_database(create_v3_chat_obj))
+            if counter == 1000:
+                commit = True;
+            pool.apply_async(insert_data_into_chat_database(create_v3_chat_obj,commit))
         else:
             data_error_row = list()
             data_error_row.append(row["messageID"])
@@ -201,7 +208,7 @@ def get_chat_data_from_v2(page):
     exit()
 
 
-def insert_data_into_chat_database(data_v3_obj):
+def insert_data_into_chat_database(data_v3_obj,commit):
     xml = '<message xml:lang="en" to="' + data_v3_obj['to'] + '" from="' + data_v3_obj['from'] + '" type="chat" id="' + \
           data_v3_obj['msg_id'] + '" xmlns="jabber:client"><body>' + data_v3_obj['body'] + '</body><subject>' + \
           data_v3_obj['chat_type'] + '</subject></message>'
@@ -217,7 +224,8 @@ def insert_data_into_chat_database(data_v3_obj):
             'chat'))
     cur3.execute(query)
     cur3.execute(query1)
-    con_v3_chat.commit()
+    if commit:
+        con_v3_chat.commit()
 
 
 get_chat_data_from_v2(page)
