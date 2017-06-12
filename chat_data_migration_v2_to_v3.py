@@ -209,7 +209,7 @@ def get_chat_data_from_v2(page):
     exit()
 
 
-def insert_data_into_chat_database(data_v3_obj,commit):
+def insert_data_into_chat_database(data_v3_obj):
     xml = '<message xml:lang="en" to="' + data_v3_obj['to'] + '" from="' + data_v3_obj['from'] + '" type="chat" id="' + \
           data_v3_obj['msg_id'] + '" xmlns="jabber:client"><body>' + data_v3_obj['body'] + '</body><subject>' + \
           data_v3_obj['chat_type'] + '</subject></message>'
