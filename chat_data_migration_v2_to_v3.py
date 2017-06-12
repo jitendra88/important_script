@@ -11,7 +11,7 @@ user_obj = {}
 
 duplicate_msg_id_list = []
 
-for_duplicate_msg_id = []
+
 
 # =========================================================================================
 
@@ -41,8 +41,8 @@ CHAT_TYPE_IMAGE_V2 = 'vImage'
 CHAT_TYPE_TEXT_V2 = 'vText'
 CHAT_TYPE_IMAGE_V3 = 'chat_image'
 CHAT_TYPE_TEXT_V3 = 'chat_text'
-PAGINATION_LIMIT = 2000
-TOTAL_NO_PROCESS = 1
+PAGINATION_LIMIT = 200000
+TOTAL_NO_PROCESS = 250
 page = None
 if sys.argv[1:]:
     page = sys.argv[1:][0]
@@ -78,7 +78,7 @@ print "=======================end======================"
 
 
 # ==================================== V2 database ================================================
-con_v2 = mdb.connect('php-beta.c03pbdmxnxpo.eu-west-1.rds.amazonaws.com', 'root', 'admin123*', 'myu')
+con_v2 = mdb.connect('chat.c03pbdmxnxpo.eu-west-1.rds.amazonaws.com', 'myudb_v2_read', 'myudb_v2_read!@#123', 'myu')
 cur2 = con_v2.cursor(mdb.cursors.DictCursor)
 cur2.execute("SET NAMES utf8mb4;")  # or utf8 or any other charset you want to handle
 
@@ -105,7 +105,7 @@ print "=================================Process created  .................."+str
 
 def get_chat_data_from_v2(page):
     start = (page - 1) * PAGINATION_LIMIT;
-    for_duplicate_msg_id = {}
+
     print "================page  :===" + str(page)
     print "================Pagination Limit  :===" + str(PAGINATION_LIMIT)
 
