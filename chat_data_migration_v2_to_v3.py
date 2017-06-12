@@ -186,7 +186,7 @@ def get_chat_data_from_v2(page):
             ws1.append(data_error_row)
             continue
         if create_v3_chat_obj is not None and create_v3_chat_obj['body'] !=None and create_v3_chat_obj['body'] !='':
-            if counter == 1000:
+            if counter == 5000:
                 commit = True;
             pool.apply_async(insert_data_into_chat_database(create_v3_chat_obj,commit))
         else:
