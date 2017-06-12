@@ -4,7 +4,6 @@ import base64
 import multiprocessing
 import sys
 from json import loads, dumps
-
 from openpyxl.workbook import Workbook
 
 # ============================================ global object ====================================================
@@ -42,7 +41,7 @@ CHAT_TYPE_IMAGE_V2 = 'vImage'
 CHAT_TYPE_TEXT_V2 = 'vText'
 CHAT_TYPE_IMAGE_V3 = 'chat_image'
 CHAT_TYPE_TEXT_V3 = 'chat_text'
-PAGINATION_LIMIT = 4000000
+PAGINATION_LIMIT = 200000
 TOTAL_NO_PROCESS = 250
 page = None
 if sys.argv[1:]:
@@ -195,7 +194,7 @@ def get_chat_data_from_v2(page):
     con_v3_chat.close()
     #print "============================= duplicate message count is :" + str(len(duplicate_msg_id_list))
     print "============================= script completed ==================================================="
-    wb.save(filename=dest_filename)
+    wb.save(filename=str(page)+dest_filename)
     #wb1.save(filename=dest_filename_message)
     pool.close()
     print "============================= please check error report file ==========================================="
