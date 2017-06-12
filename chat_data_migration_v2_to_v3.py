@@ -78,7 +78,7 @@ print "=======================end======================"
 
 
 # ==================================== V2 database ================================================
-con_v2 = mdb.connect('chat.c03pbdmxnxpo.eu-west-1.rds.amazonaws.com', 'myudb_v2_read', 'myudb_v2_read!@#123', 'myu')
+con_v2 = mdb.connect('php-beta.c03pbdmxnxpo.eu-west-1.rds.amazonaws.com', 'root', 'admin123*', 'myu')
 cur2 = con_v2.cursor(mdb.cursors.DictCursor)
 cur2.execute("SET NAMES utf8mb4;")  # or utf8 or any other charset you want to handle
 
