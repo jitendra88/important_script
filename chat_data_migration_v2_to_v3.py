@@ -41,7 +41,7 @@ CHAT_TYPE_IMAGE_V2 = 'vImage'
 CHAT_TYPE_TEXT_V2 = 'vText'
 CHAT_TYPE_IMAGE_V3 = 'chat_image'
 CHAT_TYPE_TEXT_V3 = 'chat_text'
-PAGINATION_LIMIT = 20000
+PAGINATION_LIMIT = 100000
 TOTAL_NO_PROCESS = 1
 page = None
 if sys.argv[1:]:
@@ -187,7 +187,7 @@ def get_chat_data_from_v2(page):
             ws1.append(data_error_row)
             continue
         if create_v3_chat_obj is not None and create_v3_chat_obj['body'] !=None and create_v3_chat_obj['body'] !='':
-            if counter == 10000:
+            if counter == 20000:
                 commit = True;
             pool.apply_async(insert_data_into_chat_database(create_v3_chat_obj,commit))
         else:
@@ -228,5 +228,5 @@ def insert_data_into_chat_database(data_v3_obj,commit):
     if commit:
         con_v3_chat.commit()
 
-for counter in range(1,10):
-    pool.apply_async(get_chat_data_from_v2(counter))
+
+get_chat_data_from_v2(page)
