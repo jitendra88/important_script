@@ -1,8 +1,14 @@
 import MySQLdb as mdb
-import xmlrpclib
 import multiprocessing
 import sys
-PAGINATION_LIMIT = 2000
+import xmlrpclib
+
+TOTAL_NO_PROCESS = 100
+
+con = mdb.connect('beta-v3.ctjt9fapuyu7.eu-west-1.rds.amazonaws.com', 'root', 'myuroot123', 'myuv3');
+cur = con.cursor()
+
+PAGINATION_LIMIT = 100000
 server_url = 'http://beta-chat.myu.co:4560'
 EJABBERD_XMLRPC_LOGIN = {'user': 'admin', 'server': 'localhost', 'password': 'racers23'}
 
@@ -13,9 +19,17 @@ def calling(command, data):
     return fn(EJABBERD_XMLRPC_LOGIN, data)
 
 
-con = mdb.connect('148.251.178.194', 'jitendra', 'jitendra', 'myu_v3_3005');
-cur = con.cursor()
-page = sys.argv[1:][0]
+# ======================================================= ejabered data creation in ==========================
+print "=================================Total no of process creation start .................." + str(TOTAL_NO_PROCESS)
+pool = multiprocessing.Pool(processes=TOTAL_NO_PROCESS * multiprocessing.cpu_count())
+print "=================================Process created  .................." + str(TOTAL_NO_PROCESS)
+
+page = None
+if sys.argv[1:]:
+    page = sys.argv[1:][0]
+else:
+    print "Please put cmd line argument..............."
+    exit()
 print page
 if page:
     try:
@@ -27,18 +41,23 @@ if page:
         print ("Page value only integer allowed")
         exit()
 
-cur.execute('SELECT id,name FROM users ')
 
-pool = multiprocessing.Pool(processes=20 * multiprocessing.cpu_count())
-for row in cur.fetchall():
-    print "user register ejabberd username id :::::::::::::" + str(row[0])
-    print
-    try:
-        result = pool.apply_async(calling('register', {'user': str(row[0]), 'password': str(row[0]), 'host': 'localhost'}))
-        print result
-    except Exception as e:
-        print e.faultString
+def ejabberd_user_register(page):
+    start = (page - 1) * PAGINATION_LIMIT;
+    cur.execute("SELECT id,name FROM users ORDER BY id ASC limit " + str(
+        start) + " ," + str(PAGINATION_LIMIT) + "")
+
+    for row in cur.fetchall():
+        print "user register ejabberd username id :::::::::::::" + str(row[0])
+        print
+        try:
+            result = pool.apply_async(
+                calling('register', {'user': str(row[0]), 'password': str(row[0]), 'host': 'localhost'}))
+            print result
+        except Exception as e:
+            print e.faultString
+    print ("Complete=========================user creation ")
+    pool.close()
 
 
-
-
+ejabberd_user_register(page)
