@@ -61,7 +61,7 @@ if page:
         exit()
 
 # ---------------------------------- V3 ---------------------------------------------------
-con_v3 = mdb.connect('148.251.178.194', 'jitendra', 'jitendra', 'myu_v3_04052017');
+con_v3 = mdb.connect('beta-v3.ctjt9fapuyu7.eu-west-1.rds.amazonaws.com', 'root', 'myuroot123', 'myuv3');
 cur_3 = con_v3.cursor(mdb.cursors.DictCursor)
 
 cur_3.execute('SELECT id,idV2 FROM users WHERE  idV2 is NOT  NULL ')
@@ -79,7 +79,7 @@ print "=======================end======================"
 
 
 # ==================================== V2 database ================================================
-con_v2 = mdb.connect('148.251.178.194', 'jitendra', 'jitendra', 'myu_26042017_0')
+con_v2 = mdb.connect('php-beta.c03pbdmxnxpo.eu-west-1.rds.amazonaws.com', 'root', 'admin123*', 'myu')
 cur2 = con_v2.cursor(mdb.cursors.DictCursor)
 cur2.execute("SET NAMES utf8mb4;")  # or utf8 or any other charset you want to handle
 
@@ -88,7 +88,7 @@ cur2.execute("SET CHARACTER SET utf8mb4;")  # same as above
 cur2.execute("SET character_set_connection=utf8mb4;")  # same as above
 # =========================================== end =================================================
 # =================================== chat database v3 ===========================================
-con_v3_chat = mdb.connect('148.251.178.194', 'jitendra', 'jitendra', 'myu_v3_chat')
+con_v3_chat = mdb.connect('beta-v3.ctjt9fapuyu7.eu-west-1.rds.amazonaws.com', 'root', 'myuroot123', 'myu_v3_chat');
 cur3 = con_v3_chat.cursor(mdb.cursors.DictCursor)
 cur3.execute("SET NAMES utf8mb4;")  # or utf8 or any other charset you want to handle
 
