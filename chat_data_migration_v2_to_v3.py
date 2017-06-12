@@ -103,6 +103,7 @@ pool = multiprocessing.Pool(processes=TOTAL_NO_PROCESS * multiprocessing.cpu_cou
 print "=================================Process created  .................."+str(TOTAL_NO_PROCESS)
 
 
+
 def get_chat_data_from_v2(page):
     start = (page - 1) * PAGINATION_LIMIT;
     counter  = 0
@@ -227,5 +228,5 @@ def insert_data_into_chat_database(data_v3_obj,commit):
     if commit:
         con_v3_chat.commit()
 
-
-get_chat_data_from_v2(page)
+for counter in range(1,10):
+    pool.apply_async(get_chat_data_from_v2(counter))
