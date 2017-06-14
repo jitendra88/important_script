@@ -16,7 +16,7 @@ duplicate_msg_id_list = []
 # =========================================================================================
 
 # ============================================ xlsx   error reporter ==============================================#
-# header = [u'messageID', u'errorMessage', u'body']
+header = [u'messageID', u'errorMessage', u'body']
 # error_report_data = []
 # wb = Workbook()
 # dest_filename = 'error_report_chat_message.xlsx'
@@ -24,7 +24,7 @@ duplicate_msg_id_list = []
 # ws1.title = "errorMessage"
 # ws1.append(header)
 error_report_data = []
-with open('error_report_csv.csv', 'w', newline='') as fp:
+with open('error_report_csv.csv', 'w') as fp:
     error_report_csv = csv.writer(fp, delimiter=',')
 
 # ================================ end ============================================================================#
