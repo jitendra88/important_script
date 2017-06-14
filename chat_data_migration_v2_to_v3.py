@@ -1,7 +1,6 @@
 # -*- coding: utf8 -*-
 import MySQLdb as mdb
 import base64
-import csv
 import multiprocessing
 import sys
 from json import loads, dumps
@@ -17,15 +16,12 @@ duplicate_msg_id_list = []
 
 # ============================================ xlsx   error reporter ==============================================#
 header = [u'messageID', u'errorMessage', u'body']
-# error_report_data = []
-# wb = Workbook()
-# dest_filename = 'error_report_chat_message.xlsx'
-# ws1 = wb.active
-# ws1.title = "errorMessage"
-# ws1.append(header)
 error_report_data = []
-with open('error_report_csv.csv', 'w') as fp:
-    error_report_csv = csv.writer(fp, delimiter=',')
+wb = Workbook()
+dest_filename = 'error_report_chat_message.xlsx'
+ws1 = wb.active
+ws1.title = "errorMessage"
+ws1.append(header)
 
 # ================================ end ============================================================================#
 
@@ -37,7 +33,6 @@ dest_filename_message = 'duplicate_message_report.xlsx'
 ws2 = wb1.active
 ws2.title = "errorMessage"
 ws2.append(header_1)
-
 # ======================================== END =====================================================================#
 
 CHAT_TYPE_IMAGE_V2 = 'vImage'
@@ -109,12 +104,13 @@ print "=================================Process created  .................." + s
 def get_chat_data_from_v2(page):
     start = (page - 1) * PAGINATION_LIMIT;
     counter = 0
+    commit = False;
 
     print "================page  :===" + str(page)
     print "================Pagination Limit  :===" + str(PAGINATION_LIMIT)
 
     cur2.execute(
-        "SELECT * FROM ofMessageArchive WHERE  messageID NOT IN  (SELECT message_id from deleted_messages) ORDER BY messageID DESC limit " + str(
+        "SELECT * FROM ofMessageArchive WHERE (fromJID ='12830@ip-172-31-42-152' OR  toJID='12830@ip-172-31-42-152') AND messageID NOT IN  (SELECT message_id from deleted_messages) ORDER BY messageID DESC limit " + str(
             start) + " ," + str(PAGINATION_LIMIT) + "")
     print "================Total Message count In ofMessageArchive Table :===" + str(cur2.rowcount)
 
@@ -130,14 +126,14 @@ def get_chat_data_from_v2(page):
                 data_error_row.append(row["messageID"])
                 data_error_row.append("fromJID UserId does exist in V3 database ")
                 data_error_row.append(toJID)
-                error_report_data.append(data_error_row)
+                ws1.append(data_error_row)
                 continue
             elif toJID not in user_obj:
                 data_error_row = list()
                 data_error_row.append(row["messageID"])
                 data_error_row.append("toJID  UserId does exist in V3 database ")
                 data_error_row.append(toJID)
-                error_report_data.append(data_error_row)
+                ws1.append(data_error_row)
                 continue
             else:
                 create_v3_chat_obj['from'] = user_obj[fromJID] + "@localhost"
@@ -185,7 +181,7 @@ def get_chat_data_from_v2(page):
             data_error_row.append(row["messageID"])
             data_error_row.append(str(e.message))
             data_error_row.append(str(row['body']))
-            error_report_data.append(data_error_row)
+            ws1.append(data_error_row)
             continue
         if create_v3_chat_obj is not None and create_v3_chat_obj['body'] != None and create_v3_chat_obj['body'] != '':
             if counter == 5000:
@@ -196,15 +192,14 @@ def get_chat_data_from_v2(page):
             data_error_row.append(row["messageID"])
             data_error_row.append("Body data Null ")
             data_error_row.append(str(row['body']))
-            error_report_data.append(data_error_row)
+            ws1.append(data_error_row)
             continue
     con_v3_chat.commit()
     con_v2.close()
     con_v3_chat.close()
     # print "============================= duplicate message count is :" + str(len(duplicate_msg_id_list))
     print "============================= script completed ==================================================="
-    error_report_csv.writerows(error_report_data)
-    fp.close()
+    wb.save(filename=dest_filename)
     # wb1.save(filename=dest_filename_message)
     pool.close()
     print "============================= please check error report file ==========================================="
