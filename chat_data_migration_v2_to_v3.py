@@ -137,7 +137,7 @@ def get_chat_data_from_v2(page):
                 data_error_row.append(row["messageID"])
                 data_error_row.append("toJID  UserId does exist in V3 database ")
                 data_error_row.append(toJID)
-                error_report_csv.append(data_error_row)
+                error_report_data.append(data_error_row)
                 continue
             else:
                 create_v3_chat_obj['from'] = user_obj[fromJID] + "@localhost"
@@ -196,7 +196,7 @@ def get_chat_data_from_v2(page):
             data_error_row.append(row["messageID"])
             data_error_row.append("Body data Null ")
             data_error_row.append(str(row['body']))
-            error_report_csv.append(data_error_row)
+            error_report_data.append(data_error_row)
             continue
     con_v3_chat.commit()
     con_v2.close()
