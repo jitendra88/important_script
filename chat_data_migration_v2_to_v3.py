@@ -204,6 +204,7 @@ def get_chat_data_from_v2(page):
     # print "============================= duplicate message count is :" + str(len(duplicate_msg_id_list))
     print "============================= script completed ==================================================="
     error_report_csv.writerows(error_report_data)
+    fp.close()
     # wb1.save(filename=dest_filename_message)
     pool.close()
     print "============================= please check error report file ==========================================="
