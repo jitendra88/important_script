@@ -2,6 +2,6 @@ import commands
 
 print "======================== chat migration start==================================================\N"
 
-for i in (1,1):
+for i in (1,2):
     commands.getoutput("screen -dmS chat_message_part_"+str(i)+" bash")
     commands.getoutput("screen -S chat_message_part_"+str(i)+" -p 0 -X exec python chat_data_migration_v2_to_v3.py "+str(i)+"")
