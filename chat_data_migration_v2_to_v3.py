@@ -4,7 +4,7 @@ import base64
 import multiprocessing
 import sys
 from json import loads, dumps
-
+import csv
 from openpyxl.workbook import Workbook
 
 # ============================================ global object ====================================================
@@ -33,6 +33,11 @@ dest_filename_message = 'duplicate_message_report.xlsx'
 ws2 = wb1.active
 ws2.title = "errorMessage"
 ws2.append(header_1)
+#====================================== csv wirter ==============================================================
+myFile= open( "error_report_csv.csv", "wb" )
+csvWriteRow = csv.writer( myFile )
+
+
 # ======================================== END =====================================================================#
 
 CHAT_TYPE_IMAGE_V2 = 'vImage'
@@ -126,6 +131,7 @@ def get_chat_data_from_v2(page):
                 data_error_row.append(row["messageID"])
                 data_error_row.append("fromJID UserId does exist in V3 database ")
                 data_error_row.append(fromJID)
+                csvWriteRow.writerow(data_error_row)
                 ws1.append(data_error_row)
                 continue
             elif toJID not in user_obj:
@@ -133,6 +139,7 @@ def get_chat_data_from_v2(page):
                 data_error_row.append(row["messageID"])
                 data_error_row.append("toJID  UserId does exist in V3 database ")
                 data_error_row.append(toJID)
+                csvWriteRow.writerow(data_error_row)
                 ws1.append(data_error_row)
                 continue
             else:
@@ -181,6 +188,7 @@ def get_chat_data_from_v2(page):
             data_error_row.append(row["messageID"])
             data_error_row.append(str(e.message))
             data_error_row.append(str(row['body']))
+            csvWriteRow.writerow(data_error_row)
             ws1.append(data_error_row)
             continue
         if create_v3_chat_obj is not None and create_v3_chat_obj['body'] != None and create_v3_chat_obj['body'] != '':
@@ -192,11 +200,13 @@ def get_chat_data_from_v2(page):
             data_error_row.append(row["messageID"])
             data_error_row.append("Body data Null ")
             data_error_row.append(str(row['body']))
+            csvWriteRow.writerow(data_error_row)
             ws1.append(data_error_row)
             continue
     con_v3_chat.commit()
     con_v2.close()
     con_v3_chat.close()
+    myFile.close()
     # print "============================= duplicate message count is :" + str(len(duplicate_msg_id_list))
     print "============================= script completed ==================================================="
     wb.save(filename=str(page)+"___"+dest_filename)
