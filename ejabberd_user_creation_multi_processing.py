@@ -5,7 +5,7 @@ import xmlrpclib
 
 TOTAL_NO_PROCESS = 1
 
-con = mdb.connect('beta-v3.ctjt9fapuyu7.eu-west-1.rds.amazonaws.com', 'root', 'myuroot123', 'myuv3');
+con = mdb.connect('beta-v3-1.ctjt9fapuyu7.eu-west-1.rds.amazonaws.com', 'root', 'myuroot123', 'myuv3');
 cur = con.cursor()
 
 PAGINATION_LIMIT = 20000
