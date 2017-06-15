@@ -15,24 +15,24 @@ duplicate_msg_id_list = []
 # =========================================================================================
 
 # ============================================ xlsx   error reporter ==============================================#
-header = [u'messageID', u'errorMessage', u'body']
-error_report_data = []
-wb = Workbook()
-dest_filename = 'error_report_chat_message.xlsx'
-ws1 = wb.active
-ws1.title = "errorMessage"
-ws1.append(header)
+# header = [u'messageID', u'errorMessage', u'body']
+# error_report_data = []
+# wb = Workbook()
+# dest_filename = 'error_report_chat_message.xlsx'
+# ws1 = wb.active
+# ws1.title = "errorMessage"
+# ws1.append(header)
 
 # ================================ end ============================================================================#
 
 # ========================================= duplicate message header ===============================================#
-header_1 = [u'messageID', u'senderID', u'receiverID', u'MsgId', u'ChatType', u'body']
-message_duplicate_report_data = []
-wb1 = Workbook()
-dest_filename_message = 'duplicate_message_report.xlsx'
-ws2 = wb1.active
-ws2.title = "errorMessage"
-ws2.append(header_1)
+# header_1 = [u'messageID', u'senderID', u'receiverID', u'MsgId', u'ChatType', u'body']
+# message_duplicate_report_data = []
+# wb1 = Workbook()
+# dest_filename_message = 'duplicate_message_report.xlsx'
+# ws2 = wb1.active
+# ws2.title = "errorMessage"
+# ws2.append(header_1)
 #====================================== csv wirter ==============================================================
 myFile= open( "error_report_csv.csv", "wb" )
 csvWriteRow = csv.writer( myFile )
@@ -132,7 +132,7 @@ def get_chat_data_from_v2(page):
                 data_error_row.append("fromJID UserId does exist in V3 database ")
                 data_error_row.append(fromJID)
                 csvWriteRow.writerow(data_error_row)
-                ws1.append(data_error_row)
+                #ws1.append(data_error_row)
                 continue
             elif toJID not in user_obj:
                 data_error_row = list()
@@ -140,7 +140,7 @@ def get_chat_data_from_v2(page):
                 data_error_row.append("toJID  UserId does exist in V3 database ")
                 data_error_row.append(toJID)
                 csvWriteRow.writerow(data_error_row)
-                ws1.append(data_error_row)
+                #ws1.append(data_error_row)
                 continue
             else:
                 create_v3_chat_obj['from'] = user_obj[fromJID] + "@localhost"
@@ -189,7 +189,7 @@ def get_chat_data_from_v2(page):
             data_error_row.append(str(e.message))
             data_error_row.append(str(row['body']))
             csvWriteRow.writerow(data_error_row)
-            ws1.append(data_error_row)
+            #ws1.append(data_error_row)
             continue
         if create_v3_chat_obj is not None and create_v3_chat_obj['body'] != None and create_v3_chat_obj['body'] != '':
             if counter == 5000:
@@ -201,7 +201,7 @@ def get_chat_data_from_v2(page):
             data_error_row.append("Body data Null ")
             data_error_row.append(str(row['body']))
             csvWriteRow.writerow(data_error_row)
-            ws1.append(data_error_row)
+           # ws1.append(data_error_row)
             continue
     con_v3_chat.commit()
     con_v2.close()
@@ -209,7 +209,7 @@ def get_chat_data_from_v2(page):
     myFile.close()
     # print "============================= duplicate message count is :" + str(len(duplicate_msg_id_list))
     print "============================= script completed ==================================================="
-    wb.save(filename=str(page)+"___"+dest_filename)
+    #wb.save(filename=str(page)+"___"+dest_filename)
     # wb1.save(filename=dest_filename_message)
     pool.close()
     print "============================= please check error report file ==========================================="
