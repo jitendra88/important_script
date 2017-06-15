@@ -125,7 +125,7 @@ def get_chat_data_from_v2(page):
                 data_error_row = list()
                 data_error_row.append(row["messageID"])
                 data_error_row.append("fromJID UserId does exist in V3 database ")
-                data_error_row.append(toJID)
+                data_error_row.append(fromJID)
                 ws1.append(data_error_row)
                 continue
             elif toJID not in user_obj:
