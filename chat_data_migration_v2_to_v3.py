@@ -5,6 +5,7 @@ import multiprocessing
 import sys
 from json import loads, dumps
 import csv
+import commands
 from openpyxl.workbook import Workbook
 
 # ============================================ global object ====================================================
@@ -207,6 +208,7 @@ def get_chat_data_from_v2(page):
     con_v2.close()
     con_v3_chat.close()
     myFile.close()
+    commands.getoutput("sudo killall screen")
     # print "============================= duplicate message count is :" + str(len(duplicate_msg_id_list))
     print "============================= script completed ==================================================="
     #wb.save(filename=str(page)+"___"+dest_filename)
