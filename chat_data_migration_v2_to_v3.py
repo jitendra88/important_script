@@ -64,7 +64,7 @@ if page:
         exit()
 
 # ---------------------------------- V3 ---------------------------------------------------
-    con_v3 = mdb.connect('beta-v3-1.ctjt9fapuyu7.eu-west-1.rds.amazonaws.com', 'root', 'myuroot123', 'myuv3_1');
+con_v3 = mdb.connect('beta-v3-1.ctjt9fapuyu7.eu-west-1.rds.amazonaws.com', 'root', 'myuroot123', 'myuv3');
 cur_3 = con_v3.cursor(mdb.cursors.DictCursor)
 
 cur_3.execute('SELECT id,idV2 FROM users WHERE  idV2 is NOT  NULL ')
@@ -82,7 +82,7 @@ print "=======================end======================"
 
 
 # ==================================== V2 database ================================================
-con_v2 = mdb.connect('db-beta1.c03pbdmxnxpo.eu-west-1.rds.amazonaws.com', 'root', 'admin123*', 'myu')
+con_v2 = mdb.connect('beta-php.c03pbdmxnxpo.eu-west-1.rds.amazonaws.com', 'root', 'admin123*', 'myu')
 cur2 = con_v2.cursor(mdb.cursors.DictCursor)
 cur2.execute("SET NAMES utf8mb4;")  # or utf8 or any other charset you want to handle
 
