@@ -64,7 +64,7 @@ if page:
         exit()
 
 # ---------------------------------- V3 ---------------------------------------------------
-con_v3 = mdb.connect('beta-v3-1.ctjt9fapuyu7.eu-west-1.rds.amazonaws.com', 'root', 'myuroot123', 'myuv3_1');
+    con_v3 = mdb.connect('beta-v3-1.ctjt9fapuyu7.eu-west-1.rds.amazonaws.com', 'root', 'myuroot123', 'myuv3_1');
 cur_3 = con_v3.cursor(mdb.cursors.DictCursor)
 
 cur_3.execute('SELECT id,idV2 FROM users WHERE  idV2 is NOT  NULL ')
