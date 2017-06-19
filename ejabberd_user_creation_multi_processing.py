@@ -8,7 +8,7 @@ TOTAL_NO_PROCESS = 1
 con = mdb.connect('beta-v3-1.ctjt9fapuyu7.eu-west-1.rds.amazonaws.com', 'root', 'myuroot123', 'myuv3');
 cur = con.cursor()
 
-PAGINATION_LIMIT = 30000
+PAGINATION_LIMIT = 3000
 server_url = 'http://beta-chat.myu.co:4560'
 EJABBERD_XMLRPC_LOGIN = {'user': 'admin', 'server': 'localhost', 'password': 'racers23'}
 
