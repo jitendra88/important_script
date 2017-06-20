@@ -37,7 +37,7 @@ def default_start():
         message_id_check = message_id+user_id
         delete_message_obj[message_id_check] = user_id
     con_v2.close()
-    print "=====================length of delete message object========================="+len(delete_message_obj)
+    print "=====================length of delete message object========================="+str(len(delete_message_obj))
     print "=======================end======================"
 
 
