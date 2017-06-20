@@ -1,6 +1,5 @@
 import MySQLdb as mdb
 import commands
-
 from openpyxl.workbook import Workbook
 
 user_obj = {}
@@ -61,13 +60,4 @@ def create_screen(start, end):
             i) + " -p 0 -X exec sudo python chat_data_migration_v2_to_v3.py " + str(i) + "")
 
 
-import sys
-page = None
-if sys.argv[1:]:
-    page = sys.argv[1:][0]
-else:
-    print "Please put cmd line argument..............."
-    exit()
-if page:
-    default_start()
-    create_screen(1,2)
+
