@@ -4,27 +4,18 @@ import base64
 import multiprocessing
 import sys
 from json import loads, dumps
-import csv
-import commands
+
 from openpyxl.workbook import Workbook
 
+from chat_migration_start import user_obj, ws1, wb, dest_filename,delete_message_obj
+
 # ============================================ global object ====================================================
-user_obj = {}
+
 
 duplicate_msg_id_list = []
 
 # =========================================================================================
 
-# ============================================ xlsx   error reporter ==============================================#
-header = [u'messageID', u'errorMessage', u'body']
-error_report_data = []
-wb = Workbook()
-dest_filename = 'error_report_chat_message.xlsx'
-ws1 = wb.active
-ws1.title = "errorMessage"
-ws1.append(header)
-
-# ================================ end ============================================================================#
 
 # ========================================= duplicate message header ===============================================#
 header_1 = [u'messageID', u'senderID', u'receiverID', u'MsgId', u'ChatType', u'body']
@@ -34,9 +25,8 @@ dest_filename_message = 'duplicate_message_report.xlsx'
 ws2 = wb1.active
 ws2.title = "errorMessage"
 ws2.append(header_1)
-#====================================== csv wirter ==============================================================
-myFile= open( "error_report_csv.csv", "wb" )
-csvWriteRow = csv.writer( myFile )
+# ====================================== csv wirter ==============================================================
+
 
 
 # ======================================== END =====================================================================#
@@ -62,21 +52,6 @@ if page:
     except:
         print ("Page value only integer allowed")
         exit()
-
-# ---------------------------------- V3 ---------------------------------------------------
-con_v3 = mdb.connect('beta-v3-1.ctjt9fapuyu7.eu-west-1.rds.amazonaws.com', 'root', 'myuroot123', 'myuv3');
-cur_3 = con_v3.cursor(mdb.cursors.DictCursor)
-
-cur_3.execute('SELECT id,idV2 FROM users WHERE  idV2 is NOT  NULL ')
-
-print "===================use object creation started ................."
-for row in cur_3.fetchall():
-    idV2 = str(row["idV2"])
-    idV3 = str(row["id"])
-    user_obj[idV2] = idV3
-con_v3.close()
-
-print "=======================end======================"
 
 # ====================================================== end  ======================
 
@@ -127,20 +102,27 @@ def get_chat_data_from_v2(page):
         try:
             fromJID = str(row['fromJID']).replace("@ip-172-31-42-152", '')
             toJID = str(row['toJID']).replace("@ip-172-31-42-152", '')
-            if fromJID not in user_obj:
+
+            if delete_message_obj[str(row["messageID"])] == fromJID :
+                data_error_row = list()
+                data_error_row.append(row["messageID"])
+                data_error_row.append("Chat deleted by this user :::::")
+                data_error_row.append(fromJID)
+                ws1.append(data_error_row)
+                continue
+
+            elif fromJID not in user_obj:
                 data_error_row = list()
                 data_error_row.append(row["messageID"])
                 data_error_row.append("fromJID UserId does exist in V3 database ")
                 data_error_row.append(fromJID)
-                csvWriteRow.writerow(data_error_row)
-                #ws1.append(data_error_row)
+                ws1.append(data_error_row)
                 continue
             elif toJID not in user_obj:
                 data_error_row = list()
                 data_error_row.append(row["messageID"])
                 data_error_row.append("toJID  UserId does exist in V3 database ")
                 data_error_row.append(toJID)
-                csvWriteRow.writerow(data_error_row)
                 ws1.append(data_error_row)
                 continue
             else:
@@ -189,7 +171,6 @@ def get_chat_data_from_v2(page):
             data_error_row.append(row["messageID"])
             data_error_row.append(str(e.message))
             data_error_row.append(str(row['body']))
-            csvWriteRow.writerow(data_error_row)
             ws1.append(data_error_row)
             continue
         if create_v3_chat_obj is not None and create_v3_chat_obj['body'] != None and create_v3_chat_obj['body'] != '':
@@ -201,16 +182,14 @@ def get_chat_data_from_v2(page):
             data_error_row.append(row["messageID"])
             data_error_row.append("Body data Null ")
             data_error_row.append(str(row['body']))
-            csvWriteRow.writerow(data_error_row)
             ws1.append(data_error_row)
             continue
     con_v3_chat.commit()
     con_v2.close()
     con_v3_chat.close()
-    myFile.close()
     # print "============================= duplicate message count is :" + str(len(duplicate_msg_id_list))
     print "============================= script completed ==================================================="
-    wb.save(filename=str(page)+"___"+dest_filename)
+    wb.save(dest_filename)
     # wb1.save(filename=dest_filename_message)
     pool.close()
     print "============================= please check error report file ==========================================="
