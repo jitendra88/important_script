@@ -93,7 +93,7 @@ def get_chat_data_from_v2(page):
     print "================Pagination Limit  :===" + str(PAGINATION_LIMIT)
 
     cur2.execute(
-        "SELECT fromJID,toJID,sentDate,body,messageID FROM ofMessageArchive WHERE messageId='499483'  limit " + str(
+        "SELECT fromJID,toJID,sentDate,body,messageID FROM ofMessageArchive WHERE  limit " + str(
             start) + " ," + str(PAGINATION_LIMIT) + "")
     print "================Total Message count In ofMessageArchive Table :===" + str(cur2.rowcount)
 
@@ -104,7 +104,7 @@ def get_chat_data_from_v2(page):
         try:
             fromJID = str(row['fromJID']).replace("@ip-172-31-42-152", '')
             toJID = str(row['toJID']).replace("@ip-172-31-42-152", '')
-            messageId =  str(row["messageID"])
+            messageId = str(row["messageID"])
 
             if messageId in delete_message_obj and delete_message_obj[messageId] == fromJID :
                 data_error_row = list()
