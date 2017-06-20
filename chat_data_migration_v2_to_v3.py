@@ -35,7 +35,7 @@ CHAT_TYPE_IMAGE_V2 = 'vImage'
 CHAT_TYPE_TEXT_V2 = 'vText'
 CHAT_TYPE_IMAGE_V3 = 'chat_image'
 CHAT_TYPE_TEXT_V3 = 'chat_text'
-PAGINATION_LIMIT = 2000000
+PAGINATION_LIMIT = 10000
 TOTAL_NO_PROCESS = 1
 page = None
 if sys.argv[1:]:
