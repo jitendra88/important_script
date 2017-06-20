@@ -37,7 +37,7 @@ CHAT_TYPE_IMAGE_V2 = 'vImage'
 CHAT_TYPE_TEXT_V2 = 'vText'
 CHAT_TYPE_IMAGE_V3 = 'chat_image'
 CHAT_TYPE_TEXT_V3 = 'chat_text'
-PAGINATION_LIMIT = 100000
+PAGINATION_LIMIT = 300000
 TOTAL_NO_PROCESS = 1
 page = None
 if sys.argv[1:]:
@@ -191,7 +191,7 @@ def get_chat_data_from_v2(page):
     con_v3_chat.close()
     # print "============================= duplicate message count is :" + str(len(duplicate_msg_id_list))
     print "============================= script completed ==================================================="
-    wb.save(dest_filename)
+    wb.save(page+"_________"+dest_filename)
     # wb1.save(filename=dest_filename_message)
     pool.close()
     print "============================= please check error report file ==========================================="
