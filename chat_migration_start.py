@@ -61,3 +61,4 @@ def create_screen(start, end):
 
 
 
+default_start()
