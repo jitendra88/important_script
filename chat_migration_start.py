@@ -8,12 +8,13 @@ delete_message_obj = {}
 
 
 def default_start():
-    print "======================== chat migration start==================================================\N"
 
+    print "======================== chat migration start==================================================\N"
+    print "jitendra kumar dixit"
     # ---------------------------------- V3 ---------------------------------------------------
     con_v3 = mdb.connect('beta-v3-1.ctjt9fapuyu7.eu-west-1.rds.amazonaws.com', 'root', 'myuroot123', 'myuv3');
     cur_3 = con_v3.cursor(mdb.cursors.DictCursor)
-    cur_3.execute('SELECT id,idV2 FROM users WHERE  idV2 is NOT  NULL ')
+    cur_3.execute('SELECT id,idV2 FROM users WHERE  idV2 is NOT  NULL')
 
     print "===================use object creation started ................."
     for row in cur_3.fetchall():
@@ -69,4 +70,4 @@ else:
     exit()
 if page:
     default_start()
-    create_screen(1,10)
+    create_screen(1,2)
