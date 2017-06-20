@@ -30,7 +30,7 @@ def default_start():
     cur_2.execute('SELECT message_id,user_id FROM deleted_messages')
 
     print "===================delete message object creation started ................."
-    print "================= count delete message====================================="+str(len(cur_2.rowcount))
+    print "================= count delete message====================================="+str(cur_2.rowcount)
     for row in cur_2.fetchall():
         message_id = str(row["message_id"])
         user_id = str(row["user_id"])
