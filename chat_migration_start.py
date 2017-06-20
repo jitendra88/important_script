@@ -33,7 +33,8 @@ def default_start():
     for row in cur_2.fetchall():
         message_id = str(row["message_id"])
         user_id = str(row["user_id"])
-        delete_message_obj[message_id+user_id] = user_id
+        message_id_check = message_id+user_id
+        delete_message_obj[message_id_check] = user_id
     con_v2.close()
     print "=======================end======================"
 
