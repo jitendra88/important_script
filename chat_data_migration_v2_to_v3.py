@@ -99,13 +99,14 @@ def get_chat_data_from_v2(page):
     for row in cur2.fetchall():
         counter = counter + 1
         create_v3_chat_obj = dict()
-
+        onlyForTo = False
+        onlyForFrom = False
         try:
             fromJID = str(row['fromJID']).replace("@ip-172-31-42-152", '')
             toJID = str(row['toJID']).replace("@ip-172-31-42-152", '')
             messageID = str(row["messageID"])
 
-            if toJID in delete_message_obj and (messageID in delete_message_obj[toJID]):
+            if (toJID in delete_message_obj and (messageID in delete_message_obj[toJID])) and fromJID in delete_message_obj and (messageID in delete_message_obj[fromJID]):
                 data_error_row = list()
                 data_error_row.append(row["messageID"])
                 data_error_row.append("Chat deleted by this user :::::")
@@ -113,22 +114,32 @@ def get_chat_data_from_v2(page):
                 ws1.append(data_error_row)
                 continue
             if fromJID in delete_message_obj and (messageID in delete_message_obj[fromJID]):
-                data_error_row = list()
-                data_error_row.append(row["messageID"])
-                data_error_row.append("Chat deleted by this user :::::")
-                data_error_row.append(fromJID)
-                ws1.append(data_error_row)
-                continue
+                # data_error_row = list()
+                # data_error_row.append(row["messageID"])
+                # data_error_row.append("Chat deleted by this user :::::")
+                # data_error_row.append(fromJID)
+                # ws1.append(data_error_row)
+                # continue
+                onlyForTo = True
+            if toJID in delete_message_obj and (messageID in delete_message_obj[toJID]):
+                # data_error_row = list()
+                # data_error_row.append(row["messageID"])
+                # data_error_row.append("Chat deleted by this user :::::")
+                # data_error_row.append(fromJID)
+                # ws1.append(data_error_row)
+                # continue
+                onlyForFrom = True
 
 
-            elif fromJID not in user_obj:
+
+            if fromJID not in user_obj:
                 data_error_row = list()
                 data_error_row.append(row["messageID"])
                 data_error_row.append("fromJID UserId does exist in V3 database ")
                 data_error_row.append(fromJID)
                 ws1.append(data_error_row)
                 continue
-            elif toJID not in user_obj:
+            if toJID not in user_obj:
                 data_error_row = list()
                 data_error_row.append(row["messageID"])
                 data_error_row.append("toJID  UserId does exist in V3 database ")
@@ -187,7 +198,7 @@ def get_chat_data_from_v2(page):
             if counter == 5000:
                 counter = 0
                 con_v3_chat.commit()
-            pool.apply_async(insert_data_into_chat_database(create_v3_chat_obj))
+            pool.apply_async(insert_data_into_chat_database(create_v3_chat_obj,onlyForTo,onlyForFrom))
         else:
             data_error_row = list()
             data_error_row.append(row["messageID"])
@@ -207,22 +218,38 @@ def get_chat_data_from_v2(page):
     exit()
 
 
-def insert_data_into_chat_database(data_v3_obj):
+def insert_data_into_chat_database(data_v3_obj,onlyForTo,onlyForFrom):
     xml = '<message xml:lang="en" to="' + data_v3_obj['to'] + '" from="' + data_v3_obj['from'] + '" type="chat" id="' + \
           data_v3_obj['msg_id'] + '" xmlns="jabber:client"><body>' + data_v3_obj['body'] + '</body><subject>' + \
           data_v3_obj['chat_type'] + '</subject></message>'
-    query = (
-        "insert into archive (username,xml,bare_peer,timestamp,nick,peer,txt,kind) values ('%s', '%s', '%s', '%s','%s', '%s', '%s', '%s')" % (
-            data_v3_obj['sender'], xml, data_v3_obj['to'], data_v3_obj['timestamp'], '', data_v3_obj['to'],
-            data_v3_obj['body'],
-            'chat'))
-    query1 = (
-        "insert into archive (username,xml,bare_peer,timestamp,nick,peer,txt,kind) values ('%s', '%s', '%s', '%s','%s', '%s', '%s', '%s')" % (
-            data_v3_obj['receiver'], xml, data_v3_obj['from'], data_v3_obj['timestamp'], '', data_v3_obj['from'],
-            data_v3_obj['body'],
-            'chat'))
-    cur3.execute(query)
-    cur3.execute(query1)
+    if onlyForTo:
+        query = (
+            "insert into archive (username,xml,bare_peer,timestamp,nick,peer,txt,kind) values ('%s', '%s', '%s', '%s','%s', '%s', '%s', '%s')" % (
+                data_v3_obj['sender'], xml, data_v3_obj['to'], data_v3_obj['timestamp'], '', data_v3_obj['to'],
+                data_v3_obj['body'],
+                'chat'))
+        cur3.execute(query)
+    elif onlyForFrom:
+        query1 = (
+            "insert into archive (username,xml,bare_peer,timestamp,nick,peer,txt,kind) values ('%s', '%s', '%s', '%s','%s', '%s', '%s', '%s')" % (
+                data_v3_obj['receiver'], xml, data_v3_obj['from'], data_v3_obj['timestamp'], '', data_v3_obj['from'],
+                data_v3_obj['body'],
+                'chat'))
+        cur3.execute(query1)
 
+    else:
+        query = (
+            "insert into archive (username,xml,bare_peer,timestamp,nick,peer,txt,kind) values ('%s', '%s', '%s', '%s','%s', '%s', '%s', '%s')" % (
+                data_v3_obj['sender'], xml, data_v3_obj['to'], data_v3_obj['timestamp'], '', data_v3_obj['to'],
+                data_v3_obj['body'],
+                'chat'))
+
+        query1 = (
+            "insert into archive (username,xml,bare_peer,timestamp,nick,peer,txt,kind) values ('%s', '%s', '%s', '%s','%s', '%s', '%s', '%s')" % (
+                data_v3_obj['receiver'], xml, data_v3_obj['from'], data_v3_obj['timestamp'], '', data_v3_obj['from'],
+                data_v3_obj['body'],
+                'chat'))
+        cur3.execute(query)
+        cur3.execute(query1)
 
 get_chat_data_from_v2(page)
