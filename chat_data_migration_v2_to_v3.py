@@ -87,14 +87,14 @@ def insert_data_into_chat_database(data_v3_obj, onlyForTo, onlyForFrom):
     xml = '<message xml:lang="en" to="' + data_v3_obj['to'] + '" from="' + data_v3_obj['from'] + '" type="chat" id="' + \
           data_v3_obj['msg_id'] + '" xmlns="jabber:client"><body>' + data_v3_obj['body'] + '</body><subject>' + \
           data_v3_obj['chat_type'] + '</subject></message>'
-    if onlyForTo:
+    if onlyForFrom:
         query = (
             "insert into archive (username,xml,bare_peer,timestamp,nick,peer,txt,kind) values ('%s', '%s', '%s', '%s','%s', '%s', '%s', '%s')" % (
                 data_v3_obj['sender'], xml, data_v3_obj['to'], data_v3_obj['timestamp'], '', data_v3_obj['to'],
                 data_v3_obj['body'],
                 'chat'))
         cur3.execute(query)
-    elif onlyForFrom:
+    elif onlyForTo:
         query1 = (
             "insert into archive (username,xml,bare_peer,timestamp,nick,peer,txt,kind) values ('%s', '%s', '%s', '%s','%s', '%s', '%s', '%s')" % (
                 data_v3_obj['receiver'], xml, data_v3_obj['from'], data_v3_obj['timestamp'], '', data_v3_obj['from'],
