@@ -27,14 +27,22 @@ def default_start():
     # ---------------------------------- V2 ---------------------------------------------------
     con_v2 = mdb.connect('beta-php.c03pbdmxnxpo.eu-west-1.rds.amazonaws.com', 'root', 'admin123*', 'myu');
     cur_2 = con_v2.cursor(mdb.cursors.DictCursor)
-    cur_2.execute('SELECT message_id,user_id FROM deleted_messages')
+    cur_2.execute('SELECT message_id,user_id FROM deleted_messages ')
     print "===================delete message object creation started ................."
     print "================= count delete message====================================="+str(cur_2.rowcount)
     for row in cur_2.fetchall():
-        message_id = str(row["message_id"])
+        message_id = (row["message_id"])
         user_id = str(row["user_id"])
-        message_id_check = message_id+user_id
-        delete_message_obj[message_id_check] = user_id
+        if user_id in delete_message_obj:
+            message_id_list = delete_message_obj[user_id]
+            message_id_list.append(message_id)
+            delete_message_obj[user_id]= message_id_list
+        else:
+            message_id_list =list()
+            message_id_list.append(message_id)
+            delete_message_obj[user_id] = message_id_list
+        # message_id_check = message_id+user_id
+        # delete_message_obj[message_id_check] = user_id
     con_v2.close()
     print "=====================length of delete message object========================="+str(len(delete_message_obj))
     print "=======================end======================"

@@ -104,9 +104,8 @@ def get_chat_data_from_v2(page):
         try:
             fromJID = str(row['fromJID']).replace("@ip-172-31-42-152", '')
             toJID = str(row['toJID']).replace("@ip-172-31-42-152", '')
-            messageIdCheck = str(row["messageID"])+fromJID
-
-            if messageIdCheck in delete_message_obj and (delete_message_obj[messageIdCheck] == fromJID):
+            messageID = (row["messageID"])
+            if fromJID in delete_message_obj and (messageID in delete_message_obj[fromJID]):
                 data_error_row = list()
                 data_error_row.append(row["messageID"])
                 data_error_row.append("Chat deleted by this user :::::")
