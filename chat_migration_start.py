@@ -27,8 +27,7 @@ def default_start():
     # ---------------------------------- V2 ---------------------------------------------------
     con_v2 = mdb.connect('beta-php.c03pbdmxnxpo.eu-west-1.rds.amazonaws.com', 'root', 'admin123*', 'myu');
     cur_2 = con_v2.cursor(mdb.cursors.DictCursor)
-    cur_2.execute('SELECT message_id,user_id FROM deleted_messages WHERE ')
-
+    cur_2.execute('SELECT message_id,user_id FROM deleted_messages')
     print "===================delete message object creation started ................."
     print "================= count delete message====================================="+str(cur_2.rowcount)
     for row in cur_2.fetchall():
