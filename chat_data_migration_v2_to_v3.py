@@ -78,11 +78,6 @@ cur3.execute("SET character_set_connection=utf8mb4;")  # same as above
 # ============================================================end =================================
 
 
-print "=================================Total no of process creation start .................." + str(TOTAL_NO_PROCESS)
-pool = multiprocessing.Pool(processes=TOTAL_NO_PROCESS * multiprocessing.cpu_count())
-print "=================================Process created  .................." + str(TOTAL_NO_PROCESS)
-
-
 def insert_data_into_chat_database(data_v3_obj, onlyForTo, onlyForFrom):
     xml = '<message xml:lang="en" to="' + data_v3_obj['to'] + '" from="' + data_v3_obj['from'] + '" type="chat" id="' + \
           data_v3_obj['msg_id'] + '" xmlns="jabber:client"><body>' + data_v3_obj['body'] + '</body><subject>' + \
@@ -127,7 +122,7 @@ def get_chat_data_from_v2(page):
     print "================Pagination Limit  :===" + str(PAGINATION_LIMIT)
 
     cur2.execute(
-        "SELECT fromJID,toJID,sentDate,body,messageID FROM ofMessageArchive WHERE  (fromJID='12830@ip-172-31-42-152' or toJID='12830@ip-172-31-42-152')limit " + str(
+        "SELECT fromJID,toJID,sentDate,body,messageID FROM ofMessageArchive limit " + str(
             start) + " ," + str(PAGINATION_LIMIT) + "")
     print "================Total Message count In ofMessageArchive Table :===" + str(cur2.rowcount)
 
@@ -232,14 +227,10 @@ def get_chat_data_from_v2(page):
     con_v3_chat.close()
     # print "============================= duplicate message count is :" + str(len(duplicate_msg_id_list))
     print "============================= script completed ==================================================="
-    wb.save(str(page) + "_________" + dest_filename)
+    wb.save(str(page) + "____" + dest_filename)
     # wb1.save(filename=dest_filename_message)
-    pool.close()
+
     print "============================= please check error report file ==========================================="
     exit()
-
-
-
-
 
 get_chat_data_from_v2(page)
