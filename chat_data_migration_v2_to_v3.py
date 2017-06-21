@@ -7,8 +7,7 @@ from json import loads, dumps
 
 from openpyxl.workbook import Workbook
 
-from chat_migration_start import user_obj, ws1, wb, dest_filename,delete_message_obj,default_start
-
+from chat_migration_start import user_obj, ws1, wb, dest_filename, delete_message_obj, default_start
 
 default_start()
 # ============================================ global object ====================================================
@@ -104,8 +103,16 @@ def get_chat_data_from_v2(page):
         try:
             fromJID = str(row['fromJID']).replace("@ip-172-31-42-152", '')
             toJID = str(row['toJID']).replace("@ip-172-31-42-152", '')
-            messageID = str (row["messageID"])
-            if (fromJID in delete_message_obj and (messageID in delete_message_obj[fromJID])) or (toJID in delete_message_obj and (messageID in delete_message_obj[toJID])) :
+            messageID = str(row["messageID"])
+            if (fromJID in delete_message_obj and (messageID in delete_message_obj[fromJID])) and (
+                    toJID in delete_message_obj and (messageID in delete_message_obj[toJID])):
+                data_error_row = list()
+                data_error_row.append(row["messageID"])
+                data_error_row.append("Chat deleted by this user :::::")
+                data_error_row.append(fromJID)
+                ws1.append(data_error_row)
+                continue
+            elif (fromJID in delete_message_obj and (messageID in delete_message_obj[fromJID])):
                 data_error_row = list()
                 data_error_row.append(row["messageID"])
                 data_error_row.append("Chat deleted by this user :::::")
@@ -192,7 +199,7 @@ def get_chat_data_from_v2(page):
     con_v3_chat.close()
     # print "============================= duplicate message count is :" + str(len(duplicate_msg_id_list))
     print "============================= script completed ==================================================="
-    wb.save(str(page)+"_________"+dest_filename)
+    wb.save(str(page) + "_________" + dest_filename)
     # wb1.save(filename=dest_filename_message)
     pool.close()
     print "============================= please check error report file ==========================================="
