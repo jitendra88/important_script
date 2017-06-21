@@ -68,7 +68,7 @@ cur2.execute("SET CHARACTER SET utf8mb4;")  # same as above
 cur2.execute("SET character_set_connection=utf8mb4;")  # same as above
 # =========================================== end =================================================
 # =================================== chat database v3 ===========================================
-con_v3_chat = mdb.connect('beta-v3-1.ctjt9fapuyu7.eu-west-1.rds.amazonaws.com', 'root', 'myuroot123', 'myuv3_chat');
+con_v3_chat = mdb.connect('beta-v3-1.ctjt9fapuyu7.eu-west-1.rds.amazonaws.com', 'root', 'myuroot123', 'myu_v3_chat');
 cur3 = con_v3_chat.cursor(mdb.cursors.DictCursor)
 cur3.execute("SET NAMES utf8mb4;")  # or utf8 or any other charset you want to handle
 
@@ -105,8 +105,9 @@ def get_chat_data_from_v2(page):
             fromJID = str(row['fromJID']).replace("@ip-172-31-42-152", '')
             toJID = str(row['toJID']).replace("@ip-172-31-42-152", '')
             messageIdCheck = str(row["messageID"])+fromJID
+            messageIdCheckToJid = str(row["messageID"])+toJID
 
-            if messageIdCheck in delete_message_obj and delete_message_obj[messageIdCheck] == fromJID :
+            if (messageIdCheck in delete_message_obj and (delete_message_obj[messageIdCheck] == fromJID)) or (messageIdCheckToJid in delete_message_obj and (delete_message_obj[messageIdCheckToJid] == toJID)):
                 data_error_row = list()
                 data_error_row.append(row["messageID"])
                 data_error_row.append("Chat deleted by this user :::::")
