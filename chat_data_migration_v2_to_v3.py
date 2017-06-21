@@ -109,9 +109,17 @@ def get_chat_data_from_v2(page):
                 data_error_row = list()
                 data_error_row.append(row["messageID"])
                 data_error_row.append("Chat deleted by this user :::::")
+                data_error_row.append(toJID)
+                ws1.append(data_error_row)
+                continue
+            if fromJID in delete_message_obj and (messageID in delete_message_obj[fromJID]):
+                data_error_row = list()
+                data_error_row.append(row["messageID"])
+                data_error_row.append("Chat deleted by this user :::::")
                 data_error_row.append(fromJID)
                 ws1.append(data_error_row)
                 continue
+
 
             elif fromJID not in user_obj:
                 data_error_row = list()
