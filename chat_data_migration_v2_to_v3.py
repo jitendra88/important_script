@@ -122,7 +122,7 @@ def get_chat_data_from_v2(page):
     print "================Pagination Limit  :===" + str(PAGINATION_LIMIT)
 
     cur2.execute(
-        "SELECT fromJID,toJID,sentDate,body,messageID FROM ofMessageArchive limit " + str(
+        "SELECT fromJID,toJID,sentDate,body,messageID FROM ofMessageArchive WHERE fromJID != toJID  limit " + str(
             start) + " ," + str(PAGINATION_LIMIT) + "")
     print "================Total Message count In ofMessageArchive Table :===" + str(cur2.rowcount)
 
