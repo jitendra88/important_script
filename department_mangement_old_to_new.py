@@ -13,36 +13,40 @@ path = 'department_sheet.csv'
 file = open(path, "r")
 reader = csv.reader(file)
 for line in reader:
-    if line[10] == "yes":
-        name = str(line[2])
-        id = str(line[0])
-        id_old = str(line[1])
-        sql = " UPDATE users SET departmentId = (%s) WHERE departmentId=(%s)"
-        query1 = "DELETE FROM master_departments WHERE id='%s'" % id_old
-        print ("department_id :"+id_old)
-        cur3.execute(sql , (None,id_old))
-        cur3.execute(query1)
-        con_v3.commit()
-        continue
-    if line[0] != line[1]:
-        name = str(line[2])
-        id = str(line[0])
-        id_old = str(line[1])
-        sql = " UPDATE users SET departmentId = (%s) WHERE departmentId=(%s)"
-        query1 = "DELETE FROM master_departments WHERE id='%s'" % id_old
-        print ("department_id :"+id_old)
-        cur3.execute(sql , (id,id_old))
-        cur3.execute(query1)
-        con_v3.commit()
-        continue
-    if line[0] == line[1]:
-        name = str(line[2])
-        id = str(line[0])
-        sql = "UPDATE master_departments SET name = (%s) WHERE id=(%s)"
-        cur3.execute(sql,(name,id))
-        con_v3.commit()
-        print ("department_id :"+id)
-        continue
+    try:
+        if line[10] == "yes":
+            name = str(line[2])
+            id = str(line[0])
+            id_old = str(line[1])
+            sql = " UPDATE users SET departmentId = (%s) WHERE departmentId=(%s)"
+            query1 = "DELETE FROM master_departments WHERE id='%s'" % id_old
+            print ("department_id :"+id_old)
+            cur3.execute(sql , (None,id_old))
+            cur3.execute(query1)
+            con_v3.commit()
+            continue
+        if line[0] != line[1]:
+            name = str(line[2])
+            id = str(line[0])
+            id_old = str(line[1])
+            sql = " UPDATE users SET departmentId = (%s) WHERE departmentId=(%s)"
+            query1 = "DELETE FROM master_departments WHERE id='%s'" % id_old
+            print ("department_id :"+id_old)
+            cur3.execute(sql , (id,id_old))
+            cur3.execute(query1)
+            con_v3.commit()
+            continue
+        if line[0] == line[1]:
+            name = str(line[2])
+            id = str(line[0])
+            sql = "UPDATE master_departments SET name = (%s) WHERE id=(%s)"
+            cur3.execute(sql,(name,id))
+            con_v3.commit()
+            print ("department_id :"+id)
+            continue
+    except Exception as e:
+        print  e.message
+
 
 print "complete ..........................."
 
