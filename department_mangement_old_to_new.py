@@ -19,6 +19,7 @@ for line in reader:
         id_old = str(line[1])
         sql = " UPDATE users SET departmentId = (%s) WHERE departmentId=(%s)"
         query1 = "DELETE FROM master_departments WHERE id='%s'" % id_old
+        print ("department_id :"+id_old)
         cur3.execute(sql , (None,id_old))
         cur3.execute(query1)
         con_v3.commit()
@@ -29,6 +30,7 @@ for line in reader:
         id_old = str(line[1])
         sql = " UPDATE users SET departmentId = (%s) WHERE departmentId=(%s)"
         query1 = "DELETE FROM master_departments WHERE id='%s'" % id_old
+        print ("department_id :"+id_old)
         cur3.execute(sql , (id,id_old))
         cur3.execute(query1)
         con_v3.commit()
