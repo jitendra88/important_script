@@ -41,6 +41,7 @@ for line in reader:
         sql = "UPDATE master_departments SET name = (%s) WHERE id=(%s)"
         cur3.execute(sql,(name,id))
         con_v3.commit()
+        print ("department_id :"+id)
         continue
 
 print "complete ..........................."
