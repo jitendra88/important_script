@@ -84,14 +84,14 @@ def insert_data_into_chat_database(data_v3_obj, onlyForTo, onlyForFrom):
           data_v3_obj['chat_type'] + '</subject></message>'
     if onlyForFrom:
         query = (
-            "insert into archive (username,xml,bare_peer,timestamp,nick,peer,txt,kind,msg_id) values ('%s', '%s', '%s', '%s','%s', '%s', '%s', '%s')" % (
+            "insert into archive (username,xml,bare_peer,timestamp,nick,peer,txt,kind,msg_id) values ('%s', '%s', '%s', '%s','%s', '%s', '%s', '%s','%s')" % (
                 data_v3_obj['sender'], xml, data_v3_obj['to'], data_v3_obj['timestamp'], '', data_v3_obj['to'],
                 data_v3_obj['body'],
                 'chat',data_v3_obj['msg_id']))
         cur3.execute(query)
     elif onlyForTo:
         query1 = (
-            "insert into archive (username,xml,bare_peer,timestamp,nick,peer,txt,kind,msg_id) values ('%s', '%s', '%s', '%s','%s', '%s', '%s', '%s')" % (
+            "insert into archive (username,xml,bare_peer,timestamp,nick,peer,txt,kind,msg_id) values ('%s', '%s', '%s', '%s','%s', '%s', '%s', '%s','%s')" % (
                 data_v3_obj['receiver'], xml, data_v3_obj['from'], data_v3_obj['timestamp'], '', data_v3_obj['from'],
                 data_v3_obj['body'],
                 'chat',data_v3_obj['msg_id']))
@@ -99,13 +99,13 @@ def insert_data_into_chat_database(data_v3_obj, onlyForTo, onlyForFrom):
 
     else:
         query = (
-            "insert into archive (username,xml,bare_peer,timestamp,nick,peer,txt,kind,msg_id) values ('%s', '%s', '%s', '%s','%s', '%s', '%s', '%s')" % (
+            "insert into archive (username,xml,bare_peer,timestamp,nick,peer,txt,kind,msg_id) values ('%s', '%s', '%s', '%s','%s', '%s', '%s', '%s','%s')" % (
                 data_v3_obj['sender'], xml, data_v3_obj['to'], data_v3_obj['timestamp'], '', data_v3_obj['to'],
                 data_v3_obj['body'],
                 'chat',data_v3_obj['msg_id']))
 
         query1 = (
-            "insert into archive (username,xml,bare_peer,timestamp,nick,peer,txt,kind,msg_id) values ('%s', '%s', '%s', '%s','%s', '%s', '%s', '%s')" % (
+            "insert into archive (username,xml,bare_peer,timestamp,nick,peer,txt,kind,msg_id) values ('%s', '%s', '%s', '%s','%s', '%s', '%s', '%s','%s')" % (
                 data_v3_obj['receiver'], xml, data_v3_obj['from'], data_v3_obj['timestamp'], '', data_v3_obj['from'],
                 data_v3_obj['body'],
                 'chat',data_v3_obj['msg_id']))
