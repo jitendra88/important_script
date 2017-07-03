@@ -84,31 +84,31 @@ def insert_data_into_chat_database(data_v3_obj, onlyForTo, onlyForFrom):
           data_v3_obj['chat_type'] + '</subject></message>'
     if onlyForFrom:
         query = (
-            "insert into archive (username,xml,bare_peer,timestamp,nick,peer,txt,kind) values ('%s', '%s', '%s', '%s','%s', '%s', '%s', '%s')" % (
+            "insert into archive (username,xml,bare_peer,timestamp,nick,peer,txt,kind,msg_id) values ('%s', '%s', '%s', '%s','%s', '%s', '%s', '%s')" % (
                 data_v3_obj['sender'], xml, data_v3_obj['to'], data_v3_obj['timestamp'], '', data_v3_obj['to'],
                 data_v3_obj['body'],
-                'chat'))
+                'chat',data_v3_obj['msg_id']))
         cur3.execute(query)
     elif onlyForTo:
         query1 = (
-            "insert into archive (username,xml,bare_peer,timestamp,nick,peer,txt,kind) values ('%s', '%s', '%s', '%s','%s', '%s', '%s', '%s')" % (
+            "insert into archive (username,xml,bare_peer,timestamp,nick,peer,txt,kind,msg_id) values ('%s', '%s', '%s', '%s','%s', '%s', '%s', '%s')" % (
                 data_v3_obj['receiver'], xml, data_v3_obj['from'], data_v3_obj['timestamp'], '', data_v3_obj['from'],
                 data_v3_obj['body'],
-                'chat'))
+                'chat',data_v3_obj['msg_id']))
         cur3.execute(query1)
 
     else:
         query = (
-            "insert into archive (username,xml,bare_peer,timestamp,nick,peer,txt,kind) values ('%s', '%s', '%s', '%s','%s', '%s', '%s', '%s')" % (
+            "insert into archive (username,xml,bare_peer,timestamp,nick,peer,txt,kind,msg_id) values ('%s', '%s', '%s', '%s','%s', '%s', '%s', '%s')" % (
                 data_v3_obj['sender'], xml, data_v3_obj['to'], data_v3_obj['timestamp'], '', data_v3_obj['to'],
                 data_v3_obj['body'],
-                'chat'))
+                'chat',data_v3_obj['msg_id']))
 
         query1 = (
-            "insert into archive (username,xml,bare_peer,timestamp,nick,peer,txt,kind) values ('%s', '%s', '%s', '%s','%s', '%s', '%s', '%s')" % (
+            "insert into archive (username,xml,bare_peer,timestamp,nick,peer,txt,kind,msg_id) values ('%s', '%s', '%s', '%s','%s', '%s', '%s', '%s')" % (
                 data_v3_obj['receiver'], xml, data_v3_obj['from'], data_v3_obj['timestamp'], '', data_v3_obj['from'],
                 data_v3_obj['body'],
-                'chat'))
+                'chat',data_v3_obj['msg_id']))
         cur3.execute(query)
         cur3.execute(query1)
 
@@ -122,7 +122,7 @@ def get_chat_data_from_v2(page):
     print "================Pagination Limit  :===" + str(PAGINATION_LIMIT)
 
     cur2.execute(
-        "SELECT fromJID,toJID,sentDate,body,messageID FROM ofMessageArchive WHERE fromJID != toJID  limit " + str(
+        "SELECT fromJID,toJID,sentDate,body,messageID FROM ofMessageArchive  WHERE fromJID != toJID  ORDER BY messageID DESC  limit " + str(
             start) + " ," + str(PAGINATION_LIMIT) + "")
     print "================Total Message count In ofMessageArchive Table :===" + str(cur2.rowcount)
 
@@ -214,7 +214,16 @@ def get_chat_data_from_v2(page):
             if counter == 5000:
                 counter = 0
                 con_v3_chat.commit()
-            insert_data_into_chat_database(create_v3_chat_obj, onlyForTo, onlyForFrom)
+            try:
+                insert_data_into_chat_database(create_v3_chat_obj, onlyForTo, onlyForFrom)
+            except Exception as e:
+                data_error_row = list()
+                data_error_row.append(row["messageID"])
+                data_error_row.append(str(e.message))
+                data_error_row.append(str(row['body']))
+                ws1.append(data_error_row)
+                continue
+
         else:
             data_error_row = list()
             data_error_row.append(row["messageID"])
