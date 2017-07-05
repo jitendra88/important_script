@@ -58,7 +58,7 @@ if page:
 
 
 # ==================================== V2 database ================================================
-con_v2 = mdb.connect('beta-php.c03pbdmxnxpo.eu-west-1.rds.amazonaws.com', 'root', 'admin123*', 'myu')
+con_v2 = mdb.connect('beta-v2.c03pbdmxnxpo.eu-west-1.rds.amazonaws.com', 'root', 'admin123*', 'myu')
 cur2 = con_v2.cursor(mdb.cursors.DictCursor)
 cur2.execute("SET NAMES utf8mb4;")  # or utf8 or any other charset you want to handle
 
@@ -122,7 +122,7 @@ def get_chat_data_from_v2(page):
     print "================Pagination Limit  :===" + str(PAGINATION_LIMIT)
 
     cur2.execute(
-        "SELECT fromJID,toJID,sentDate,body,messageID FROM ofMessageArchive  WHERE (fromJID='12830@ip-172-31-42-152' OR toJID='12830@ip-172-31-42-152') AND fromJID != toJID  ORDER BY messageID DESC  limit " + str(
+        "SELECT fromJID,toJID,sentDate,body,messageID FROM ofMessageArchive WHERE  fromJID != toJID  ORDER BY messageID DESC  limit " + str(
             start) + " ," + str(PAGINATION_LIMIT) + "")
     print "================Total Message count In ofMessageArchive Table :===" + str(cur2.rowcount)
 
