@@ -58,7 +58,8 @@ cur3.execute("SET character_set_connection=utf8mb4;")  # same as above
 # ============================================================end =================================
 
 
-def getDataFromV2SchoolAdmin():
+def \
+        getDataFromV2SchoolAdmin():
     data_v3_obj ={}
     cur2.execute('SELECT id,name,email,password,profile_pic FROM school_admin')
     print "===================use object creation started ................."
@@ -146,6 +147,40 @@ def data_insert(data_v3_obj,univesity_ids,permission_list):
         data_insert_cms_user(cur3.lastrowid,univesity_ids,permission_list)
 
 
+def data_insert_for_admin_user(*args,**kwargs):
+    try:
+        query = (
+            "insert into auth_user (first_name,email,username,password,is_active,is_staff,is_superuser) values ('%s', '%s', '%s', '%s','%s', '%s','%s')" % (
+                'Cms User','info@myu.co','cms_user','1952211feba630b9dc1889385d703cd3',1,1,1))
+        cur3.execute(query)
+        con_v3_cms.commit()
+        print cur3.lastrowid
+
+    except Exception as e:
+        print e.message
+    if cur3.lastrowid:
+        data_insert_cms_user_admin(cur3.lastrowid)
+
+def data_insert_cms_user_admin(userId):
+    query = (
+        "insert into cms_user (userTypeId,userId) values ('%s', '%s')" % (
+            2,userId))
+    cur3.execute(query)
+    con_v3_cms.commit()
+    userId = cur3.lastrowid
+    data_insert_cms_permission_for_admin(userId)
+
+def data_insert_cms_permission_for_admin(userId):
+
+    for perms_obj in permision_obj_list:
+        try:
+            query = (
+            "insert into master_users_permission_tab_mappings (userId,permissionTypeId,canView,canAdd,canedit,candelete) values ('%s', '%s','%s', '%s','%s', '%s')" % (
+                userId,perms_obj["id"],1,1,1,1))
+            cur3.execute(query)
+        except Exception as e:
+            print e.message
+    con_v3_cms.commit()
 
 
 
@@ -175,3 +210,4 @@ def data_insert(data_v3_obj,univesity_ids,permission_list):
 
 #media_upload_admin(media_upload_url,filepath,"62d19757d37270e2be83bfe08b329be0")
 getDataFromV2SchoolAdmin();
+data_insert_for_admin_user()
