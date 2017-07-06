@@ -39,7 +39,7 @@ post_offline_message(From, To, Body, MsgId) ->
   MessageId = binary_to_list(MsgId),
   DataBody = "{\"toJID\":\"" ++ ToUser ++ "\",\"fromJID\":\"" ++ FromUser ++ "\",\"body\":\"" ++ FinalBody ++ "\",\"messageID\":\"" ++ MessageId ++ "\"}",
   Method = post,
-  URL = "http://beta-api.myu.co/midl/api/v3/pushnotification/chat?debug=true",
+  URL = "http://api.myu.co/midl/api/v3/pushnotification/chat?debug=true",
   Header = [],
   Type = "application/json",
   HTTPOptions = [],
