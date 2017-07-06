@@ -91,28 +91,31 @@ def data_insert_cms_permission(userId,permission_list):
         if perms_obj['id'] in insert_id:
             continue;
         for perms in permission_list:
-            if str(perms_obj["id"]) == str(perms["school_menu_id"]) and str(perms["school_menu_id"]) != '4' :
-                 change_id = tab_v2_v3[str(perms["school_menu_id"])]
-                 query = (
-                     "insert into master_users_permission_tab_mappings (userId,permissionTypeId,canView,canAdd,canedit,candelete) values ('%s', '%s','%s', '%s','%s', '%s')" % (
-                         userId,change_id,perms["read"],perms["create"],perms["update"],perms["delete"]))
-                 query1 = (
-                     "insert into master_users_permission_tab_mappings (userId,permissionTypeId,canView,canAdd,canedit,candelete) values ('%s', '%s','%s', '%s','%s', '%s')" % (
-                         userId,perms_obj["id"],0,0,0,0))
-                 cur3.execute(query)
-                 cur3.execute(query1)
-                 insert_id.append(perms["school_menu_id"])
-                 break
-            elif perms_obj["id"] == 10 :
-                query = (
-                    "insert into master_users_permission_tab_mappings (userId,permissionTypeId,canView,canAdd,canedit,candelete) values ('%s', '%s','%s', '%s','%s', '%s')" % (
-                        userId,perms_obj["id"],1,1,1,1))
-                cur3.execute(query)
-            else:
-                query = (
-                    "insert into master_users_permission_tab_mappings (userId,permissionTypeId,canView,canAdd,canedit,candelete) values ('%s', '%s','%s', '%s','%s', '%s')" % (
-                        userId,perms_obj["id"],0,0,0,0))
-                cur3.execute(query)
+            try:
+                if str(perms_obj["id"]) == str(perms["school_menu_id"]) and str(perms["school_menu_id"]) != '4' :
+                     change_id = tab_v2_v3[str(perms["school_menu_id"])]
+                     query = (
+                         "insert into master_users_permission_tab_mappings (userId,permissionTypeId,canView,canAdd,canedit,candelete) values ('%s', '%s','%s', '%s','%s', '%s')" % (
+                             userId,change_id,perms["read"],perms["create"],perms["update"],perms["delete"]))
+                     query1 = (
+                         "insert into master_users_permission_tab_mappings (userId,permissionTypeId,canView,canAdd,canedit,candelete) values ('%s', '%s','%s', '%s','%s', '%s')" % (
+                             userId,perms_obj["id"],0,0,0,0))
+                     cur3.execute(query)
+                     cur3.execute(query1)
+                     insert_id.append(perms["school_menu_id"])
+                     break
+                elif perms_obj["id"] == 10 :
+                    query = (
+                        "insert into master_users_permission_tab_mappings (userId,permissionTypeId,canView,canAdd,canedit,candelete) values ('%s', '%s','%s', '%s','%s', '%s')" % (
+                            userId,perms_obj["id"],1,1,1,1))
+                    cur3.execute(query)
+                else:
+                    query = (
+                        "insert into master_users_permission_tab_mappings (userId,permissionTypeId,canView,canAdd,canedit,candelete) values ('%s', '%s','%s', '%s','%s', '%s')" % (
+                            userId,perms_obj["id"],0,0,0,0))
+                    cur3.execute(query)
+            except Exception as e:
+                print e.message
     con_v3_cms.commit()
 
 
