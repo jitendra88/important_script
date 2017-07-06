@@ -60,7 +60,7 @@ cur3.execute("SET character_set_connection=utf8mb4;")  # same as above
 
 def getDataFromV2SchoolAdmin():
     data_v3_obj ={}
-    cur2.execute('SELECT id,name,email,password,profile_pic FROM school_admin where id=16')
+    cur2.execute('SELECT id,name,email,password,profile_pic FROM school_admin')
     print "===================use object creation started ................."
     for row in cur2.fetchall():
         cur2.execute('SELECT university_id FROM school_admin_university where school_admin_id='+str(row['id']))
