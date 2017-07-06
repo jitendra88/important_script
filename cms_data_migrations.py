@@ -60,7 +60,7 @@ cur3.execute("SET character_set_connection=utf8mb4;")  # same as above
 
 def getDataFromV2SchoolAdmin():
     data_v3_obj ={}
-    cur2.execute('SELECT id,name,email,password,profile_pic FROM school_admin ')
+    cur2.execute('SELECT id,name,email,password,profile_pic FROM school_admin where id=16')
     print "===================use object creation started ................."
     for row in cur2.fetchall():
         cur2.execute('SELECT university_id FROM school_admin_university where school_admin_id='+str(row['id']))
@@ -108,13 +108,11 @@ def data_insert_cms_permission(userId,permission_list):
                     "insert into master_users_permission_tab_mappings (userId,permissionTypeId,canView,canAdd,canedit,candelete) values ('%s', '%s','%s', '%s','%s', '%s')" % (
                         userId,perms_obj["id"],1,1,1,1))
                 cur3.execute(query)
-                break
             else:
                 query = (
                     "insert into master_users_permission_tab_mappings (userId,permissionTypeId,canView,canAdd,canedit,candelete) values ('%s', '%s','%s', '%s','%s', '%s')" % (
                         userId,perms_obj["id"],0,0,0,0))
                 cur3.execute(query)
-                break
     con_v3_cms.commit()
 
 
