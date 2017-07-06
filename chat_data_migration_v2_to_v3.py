@@ -67,7 +67,7 @@ cur2.execute("SET CHARACTER SET utf8mb4;")  # same as above
 cur2.execute("SET character_set_connection=utf8mb4;")  # same as above
 # =========================================== end =================================================
 # =================================== chat database v3 ===========================================
-con_v3_chat = mdb.connect('beta-v3-1.ctjt9fapuyu7.eu-west-1.rds.amazonaws.com', 'root', 'myuroot123', 'myu_v3_chat');
+con_v3_chat = mdb.connect('myu-v3-prod.c03pbdmxnxpo.eu-west-1.rds.amazonaws.com', 'myu_root', 'myu_root123root*', 'myuv3chat')
 cur3 = con_v3_chat.cursor(mdb.cursors.DictCursor)
 cur3.execute("SET NAMES utf8mb4;")  # or utf8 or any other charset you want to handle
 

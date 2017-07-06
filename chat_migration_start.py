@@ -11,7 +11,7 @@ def default_start():
     print "======================== chat migration start==================================================\N"
     print "jitendra kumar dixit"
     # ---------------------------------- V3 ---------------------------------------------------
-    con_v3 = mdb.connect('beta-v3-1.ctjt9fapuyu7.eu-west-1.rds.amazonaws.com', 'root', 'myuroot123', 'myuv3');
+    con_v3 = mdb.connect('myu-v3-prod.c03pbdmxnxpo.eu-west-1.rds.amazonaws.com', 'myu_root', 'myu_root123root*', 'myuv3')
     cur_3 = con_v3.cursor(mdb.cursors.DictCursor)
     cur_3.execute('SELECT id,idV2 FROM users WHERE  idV2 is NOT  NULL')
 
