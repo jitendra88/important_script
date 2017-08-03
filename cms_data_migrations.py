@@ -37,7 +37,7 @@ permision_obj_list = [{
 
 ]
 # ==================================== V2 database ================================================
-con_v2 = mdb.connect('beta-v2.c03pbdmxnxpo.eu-west-1.rds.amazonaws.com', 'root', 'admin123*', 'myu')
+con_v2 = mdb.connect('chat.c03pbdmxnxpo.eu-west-1.rds.amazonaws.com', 'root', 'admin123*', 'myu')
 cur2 = con_v2.cursor(mdb.cursors.DictCursor)
 cur2.execute("SET NAMES utf8mb4;")  # or utf8 or any other charset you want to handle
 
