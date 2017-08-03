@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff52b19a-bd47-4079-b761-a9a719a6a378" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="important_script.iws" />
@@ -30,7 +29,7 @@
       <file leaf-file-name="chat_data_migration_v2_to_v3.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chat_data_migration_v2_to_v3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="780">
+            <state relative-caret-position="150">
               <caret line="60" column="70" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="70" />
               <folding>
                 <element signature="e#23#44#0" expanded="true" />
@@ -77,7 +76,7 @@
       <file leaf-file-name="ejabberd_user_creation_multi_processing.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ejabberd_user_creation_multi_processing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
+            <state relative-caret-position="195">
               <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
@@ -113,7 +112,7 @@
       <file leaf-file-name="chat_migration_start.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chat_migration_start.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
+            <state relative-caret-position="255">
               <caret line="17" column="56" selection-start-line="17" selection-start-column="56" selection-end-line="17" selection-end-column="56" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
@@ -134,32 +133,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cms_data_migrations.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cms_data_migrations.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cms_data_migrations.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-135">
-              <caret line="48" column="117" selection-start-line="48" selection-start-column="117" selection-end-line="48" selection-end-column="117" />
+            <state relative-caret-position="-1170">
+              <caret line="6" column="16" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="16" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
-                <marker date="1499351043166" expanded="true" signature="1686:1745" ph="SELECT id,na... school_admin" />
-                <marker date="1499351043166" expanded="true" signature="1879:1951" ph="SELECT unive... school_admin_university" />
-                <marker date="1499351043166" expanded="true" signature="2031:2093" ph="SELECT * FRO... school_admin_menu_access" />
-                <marker date="1499351043166" expanded="true" signature="2555:2641" ph="insert into school_admin_university_mappings... " />
-                <marker date="1499351043166" expanded="true" signature="3238:3387" ph="insert into master_users_permission_tab_mappings... " />
-                <marker date="1499351043166" expanded="true" signature="3561:3710" ph="insert into master_users_permission_tab_mappings... " />
-                <marker date="1499351043166" expanded="true" signature="4051:4200" ph="insert into master_users_permission_tab_mappings... " />
-                <marker date="1499351043166" expanded="true" signature="4384:4533" ph="insert into master_users_permission_tab_mappings... " />
-                <marker date="1499351043166" expanded="true" signature="4821:4881" ph="insert into cms_user... " />
-                <marker date="1499351043166" expanded="true" signature="5198:5303" ph="insert into auth_user... " />
-                <marker date="1499351043166" expanded="true" signature="5749:5887" ph="insert into auth_user... " />
-                <marker date="1499351043166" expanded="true" signature="6263:6323" ph="insert into cms_user... " />
-                <marker date="1499351043166" expanded="true" signature="6618:6767" ph="insert into master_users_permission_tab_mappings... " />
+                <marker date="1501766072309" expanded="true" signature="1683:1742" ph="SELECT id,na... school_admin" />
+                <marker date="1501766072309" expanded="true" signature="1876:1948" ph="SELECT unive... school_admin_university" />
+                <marker date="1501766072309" expanded="true" signature="2028:2090" ph="SELECT * FRO... school_admin_menu_access" />
+                <marker date="1501766072309" expanded="true" signature="2552:2638" ph="insert into school_admin_university_mappings... " />
+                <marker date="1501766072309" expanded="true" signature="3235:3384" ph="insert into master_users_permission_tab_mappings... " />
+                <marker date="1501766072309" expanded="true" signature="3558:3707" ph="insert into master_users_permission_tab_mappings... " />
+                <marker date="1501766072309" expanded="true" signature="4048:4197" ph="insert into master_users_permission_tab_mappings... " />
+                <marker date="1501766072309" expanded="true" signature="4381:4530" ph="insert into master_users_permission_tab_mappings... " />
+                <marker date="1501766072309" expanded="true" signature="4818:4878" ph="insert into cms_user... " />
+                <marker date="1501766072309" expanded="true" signature="5195:5300" ph="insert into auth_user... " />
+                <marker date="1501766072309" expanded="true" signature="5746:5884" ph="insert into auth_user... " />
+                <marker date="1501766072309" expanded="true" signature="6260:6320" ph="insert into cms_user... " />
+                <marker date="1501766072309" expanded="true" signature="6615:6764" ph="insert into master_users_permission_tab_mappings... " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chat_screen_creation.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="chat_screen_creation.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/chat_screen_creation.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="15">
@@ -184,9 +183,9 @@
       <list>
         <option value="$PROJECT_DIR$/chat_migration_start.py" />
         <option value="$PROJECT_DIR$/chat_data_migration_v2_to_v3.py" />
-        <option value="$PROJECT_DIR$/cms_data_migrations.py" />
         <option value="$PROJECT_DIR$/ejabberd_user_creation_multi_processing.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/cms_data_migrations.py" />
       </list>
     </option>
   </component>
@@ -922,16 +921,16 @@
       <workItem from="1499340508908" duration="5527000" />
       <workItem from="1499424729581" duration="9764000" />
       <workItem from="1499611216997" duration="20000" />
-      <workItem from="1501764755040" duration="931000" />
+      <workItem from="1501764755040" duration="3750000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21274000" />
+    <option name="totallyTimeSpent" value="24093000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -939,9 +938,9 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.50278884" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988048" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4876161" sideWeight="0.49721116" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4876161" sideWeight="0.49721116" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24940239" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24940239" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Memory View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988048" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1049,7 +1048,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#0#21#0" expanded="false" />
             <marker date="1497246727620" expanded="true" signature="439:464" ph="SELECT id,na... users" />
           </folding>
         </state>
@@ -1116,7 +1115,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#0#21#0" expanded="false" />
             <marker date="1497246727620" expanded="true" signature="439:464" ph="SELECT id,na... users" />
           </folding>
         </state>
@@ -1306,19 +1305,19 @@
           <caret line="62" column="77" selection-start-line="62" selection-start-column="77" selection-end-line="62" selection-end-column="77" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-            <marker date="1499351043166" expanded="true" signature="1686:1745" ph="SELECT id,na... school_admin" />
-            <marker date="1499351043166" expanded="true" signature="1879:1951" ph="SELECT unive... school_admin_university" />
-            <marker date="1499351043166" expanded="true" signature="2031:2093" ph="SELECT * FRO... school_admin_menu_access" />
-            <marker date="1499351043166" expanded="true" signature="2555:2641" ph="insert into school_admin_university_mappings... " />
-            <marker date="1499351043166" expanded="true" signature="3238:3387" ph="insert into master_users_permission_tab_mappings... " />
-            <marker date="1499351043166" expanded="true" signature="3561:3710" ph="insert into master_users_permission_tab_mappings... " />
-            <marker date="1499351043166" expanded="true" signature="4051:4200" ph="insert into master_users_permission_tab_mappings... " />
-            <marker date="1499351043166" expanded="true" signature="4384:4533" ph="insert into master_users_permission_tab_mappings... " />
-            <marker date="1499351043166" expanded="true" signature="4821:4881" ph="insert into cms_user... " />
-            <marker date="1499351043166" expanded="true" signature="5198:5303" ph="insert into auth_user... " />
-            <marker date="1499351043166" expanded="true" signature="5749:5887" ph="insert into auth_user... " />
-            <marker date="1499351043166" expanded="true" signature="6263:6323" ph="insert into cms_user... " />
-            <marker date="1499351043166" expanded="true" signature="6618:6767" ph="insert into master_users_permission_tab_mappings... " />
+            <marker date="1501766072309" expanded="true" signature="1683:1742" ph="SELECT id,na... school_admin" />
+            <marker date="1501766072309" expanded="true" signature="1876:1948" ph="SELECT unive... school_admin_university" />
+            <marker date="1501766072309" expanded="true" signature="2028:2090" ph="SELECT * FRO... school_admin_menu_access" />
+            <marker date="1501766072309" expanded="true" signature="2552:2638" ph="insert into school_admin_university_mappings... " />
+            <marker date="1501766072309" expanded="true" signature="3235:3384" ph="insert into master_users_permission_tab_mappings... " />
+            <marker date="1501766072309" expanded="true" signature="3558:3707" ph="insert into master_users_permission_tab_mappings... " />
+            <marker date="1501766072309" expanded="true" signature="4048:4197" ph="insert into master_users_permission_tab_mappings... " />
+            <marker date="1501766072309" expanded="true" signature="4381:4530" ph="insert into master_users_permission_tab_mappings... " />
+            <marker date="1501766072309" expanded="true" signature="4818:4878" ph="insert into cms_user... " />
+            <marker date="1501766072309" expanded="true" signature="5195:5300" ph="insert into auth_user... " />
+            <marker date="1501766072309" expanded="true" signature="5746:5884" ph="insert into auth_user... " />
+            <marker date="1501766072309" expanded="true" signature="6260:6320" ph="insert into cms_user... " />
+            <marker date="1501766072309" expanded="true" signature="6615:6764" ph="insert into master_users_permission_tab_mappings... " />
           </folding>
         </state>
       </provider>
@@ -1328,7 +1327,7 @@
         <state relative-caret-position="210">
           <caret line="15" column="38" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#0#21#0" expanded="false" />
             <marker date="1497246727620" expanded="true" signature="439:464" ph="SELECT id,na... users" />
           </folding>
         </state>
@@ -1359,58 +1358,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chat_data_migration_v2_to_v3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="60" column="70" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="70" />
-          <folding>
-            <element signature="e#23#44#0" expanded="true" />
-            <marker date="1499351030906" expanded="true" signature="3330:3470" ph="insert into archive... " />
-            <marker date="1499351030906" expanded="true" signature="3752:3892" ph="insert into archive... " />
-            <marker date="1499351030906" expanded="true" signature="4171:4311" ph="insert into archive... " />
-            <marker date="1499351030906" expanded="true" signature="4546:4686" ph="insert into archive... " />
-            <marker date="1499351030906" expanded="true" signature="5220:5286" ph="SELECT fromJ... ofMessageArchive" />
-            <marker date="1499351030906" expanded="true" signature="5220:5376" ph="SELECT fromJ... ofMessageArchive" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mod_ejabberd_offline_push.erl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="579">
           <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chat_migration_start.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="17" column="56" selection-start-line="17" selection-start-column="56" selection-end-line="17" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-            <marker date="1499351030950" expanded="true" signature="570:620" ph="SELECT id,id... users" />
-            <marker date="1499351030950" expanded="true" signature="1179:1226" ph="SELECT messa... deleted_messages" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chat_screen_creation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ejabberd_user_creation_multi_processing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-            <marker date="1501764986848" expanded="true" signature="1420:1498" ph="SELECT id,na... users" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1435,24 +1387,71 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cms_data_migrations.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-135">
-          <caret line="48" column="117" selection-start-line="48" selection-start-column="117" selection-end-line="48" selection-end-column="117" />
+        <state relative-caret-position="-1170">
+          <caret line="6" column="16" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="16" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-            <marker date="1499351043166" expanded="true" signature="1686:1745" ph="SELECT id,na... school_admin" />
-            <marker date="1499351043166" expanded="true" signature="1879:1951" ph="SELECT unive... school_admin_university" />
-            <marker date="1499351043166" expanded="true" signature="2031:2093" ph="SELECT * FRO... school_admin_menu_access" />
-            <marker date="1499351043166" expanded="true" signature="2555:2641" ph="insert into school_admin_university_mappings... " />
-            <marker date="1499351043166" expanded="true" signature="3238:3387" ph="insert into master_users_permission_tab_mappings... " />
-            <marker date="1499351043166" expanded="true" signature="3561:3710" ph="insert into master_users_permission_tab_mappings... " />
-            <marker date="1499351043166" expanded="true" signature="4051:4200" ph="insert into master_users_permission_tab_mappings... " />
-            <marker date="1499351043166" expanded="true" signature="4384:4533" ph="insert into master_users_permission_tab_mappings... " />
-            <marker date="1499351043166" expanded="true" signature="4821:4881" ph="insert into cms_user... " />
-            <marker date="1499351043166" expanded="true" signature="5198:5303" ph="insert into auth_user... " />
-            <marker date="1499351043166" expanded="true" signature="5749:5887" ph="insert into auth_user... " />
-            <marker date="1499351043166" expanded="true" signature="6263:6323" ph="insert into cms_user... " />
-            <marker date="1499351043166" expanded="true" signature="6618:6767" ph="insert into master_users_permission_tab_mappings... " />
+            <marker date="1501766072309" expanded="true" signature="1683:1742" ph="SELECT id,na... school_admin" />
+            <marker date="1501766072309" expanded="true" signature="1876:1948" ph="SELECT unive... school_admin_university" />
+            <marker date="1501766072309" expanded="true" signature="2028:2090" ph="SELECT * FRO... school_admin_menu_access" />
+            <marker date="1501766072309" expanded="true" signature="2552:2638" ph="insert into school_admin_university_mappings... " />
+            <marker date="1501766072309" expanded="true" signature="3235:3384" ph="insert into master_users_permission_tab_mappings... " />
+            <marker date="1501766072309" expanded="true" signature="3558:3707" ph="insert into master_users_permission_tab_mappings... " />
+            <marker date="1501766072309" expanded="true" signature="4048:4197" ph="insert into master_users_permission_tab_mappings... " />
+            <marker date="1501766072309" expanded="true" signature="4381:4530" ph="insert into master_users_permission_tab_mappings... " />
+            <marker date="1501766072309" expanded="true" signature="4818:4878" ph="insert into cms_user... " />
+            <marker date="1501766072309" expanded="true" signature="5195:5300" ph="insert into auth_user... " />
+            <marker date="1501766072309" expanded="true" signature="5746:5884" ph="insert into auth_user... " />
+            <marker date="1501766072309" expanded="true" signature="6260:6320" ph="insert into cms_user... " />
+            <marker date="1501766072309" expanded="true" signature="6615:6764" ph="insert into master_users_permission_tab_mappings... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ejabberd_user_creation_multi_processing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+            <marker date="1501764986848" expanded="true" signature="1420:1498" ph="SELECT id,na... users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chat_data_migration_v2_to_v3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="60" column="70" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="70" />
+          <folding>
+            <element signature="e#23#44#0" expanded="true" />
+            <marker date="1499351030906" expanded="true" signature="3330:3470" ph="insert into archive... " />
+            <marker date="1499351030906" expanded="true" signature="3752:3892" ph="insert into archive... " />
+            <marker date="1499351030906" expanded="true" signature="4171:4311" ph="insert into archive... " />
+            <marker date="1499351030906" expanded="true" signature="4546:4686" ph="insert into archive... " />
+            <marker date="1499351030906" expanded="true" signature="5220:5286" ph="SELECT fromJ... ofMessageArchive" />
+            <marker date="1499351030906" expanded="true" signature="5220:5376" ph="SELECT fromJ... ofMessageArchive" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chat_migration_start.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="56" selection-start-line="17" selection-start-column="56" selection-end-line="17" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+            <marker date="1499351030950" expanded="true" signature="570:620" ph="SELECT id,id... users" />
+            <marker date="1499351030950" expanded="true" signature="1179:1226" ph="SELECT messa... deleted_messages" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chat_screen_creation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
