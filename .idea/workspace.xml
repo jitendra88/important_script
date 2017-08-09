@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ff52b19a-bd47-4079-b761-a9a719a6a378" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ejabberd_user_creation_multi_processing.py" afterPath="$PROJECT_DIR$/ejabberd_user_creation_multi_processing.py" />
     </list>
     <ignored path="important_script.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -15,7 +16,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/important_script$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1499364237160" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/important_script$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1502308323194" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -29,45 +30,16 @@
       <file leaf-file-name="chat_data_migration_v2_to_v3.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chat_data_migration_v2_to_v3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="60" column="70" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="70" />
+            <state relative-caret-position="1710">
+              <caret line="126" column="65" selection-start-line="126" selection-start-column="65" selection-end-line="126" selection-end-column="65" />
               <folding>
                 <element signature="e#23#44#0" expanded="true" />
-                <marker date="1499351030906" expanded="true" signature="3330:3470" ph="insert into archive... " />
-                <marker date="1499351030906" expanded="true" signature="3752:3892" ph="insert into archive... " />
-                <marker date="1499351030906" expanded="true" signature="4171:4311" ph="insert into archive... " />
-                <marker date="1499351030906" expanded="true" signature="4546:4686" ph="insert into archive... " />
-                <marker date="1499351030906" expanded="true" signature="5220:5286" ph="SELECT fromJ... ofMessageArchive" />
-                <marker date="1499351030906" expanded="true" signature="5220:5376" ph="SELECT fromJ... ofMessageArchive" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="data_migration_multiprocessing.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data_migration_multiprocessing.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding>
-                <marker date="1497246727620" expanded="true" signature="214:262" ph="SELECT * FRO... user" />
-                <marker date="1497246727620" expanded="true" signature="573:606" ph="INSERT INTO missing_value... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="department_mangement_old_to_new.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/department_mangement_old_to_new.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="20" column="78" selection-start-line="20" selection-start-column="78" selection-end-line="20" selection-end-column="78" />
-              <folding>
-                <marker date="1498736391447" expanded="true" signature="642:702" ph="UPDATE users... " />
-                <marker date="1498736391447" expanded="true" signature="726:770" ph="DELETE FROM " />
-                <marker date="1498736391447" expanded="true" signature="1101:1161" ph="UPDATE users... " />
-                <marker date="1498736391447" expanded="true" signature="1185:1229" ph="DELETE FROM " />
-                <marker date="1498736391447" expanded="true" signature="1523:1578" ph="UPDATE maste... " />
+                <marker date="1501778077092" expanded="true" signature="3327:3467" ph="insert into archive... " />
+                <marker date="1501778077092" expanded="true" signature="3749:3889" ph="insert into archive... " />
+                <marker date="1501778077092" expanded="true" signature="4168:4308" ph="insert into archive... " />
+                <marker date="1501778077092" expanded="true" signature="4543:4683" ph="insert into archive... " />
+                <marker date="1501778077092" expanded="true" signature="5217:5283" ph="SELECT fromJ... ofMessageArchive" />
+                <marker date="1501778077092" expanded="true" signature="5217:5373" ph="SELECT fromJ... ofMessageArchive" />
               </folding>
             </state>
           </provider>
@@ -76,12 +48,46 @@
       <file leaf-file-name="ejabberd_user_creation_multi_processing.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ejabberd_user_creation_multi_processing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+            <state relative-caret-position="181">
+              <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
-                <marker date="1501764986848" expanded="true" signature="1420:1498" ph="SELECT id,na... users" />
+                <marker date="1502308323027" expanded="true" signature="1421:1501" ph="SELECT id,na... users" />
+                <marker date="1502308323027" expanded="true" signature="1550:1577" ph="SELECT id,na... users" />
+                <marker date="1502308323027" expanded="true" signature="1550:1604" ph="SELECT id,na... users" />
+                <marker date="1502308323027" expanded="true" signature="1550:1605" ph="SELECT id,na... users" />
+                <marker date="1502308323027" expanded="true" signature="1550:1607" ph="SELECT id,na... users" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pool.py" pinned="false" current-in-tab="false">
+        <entry file="file:///usr/lib/python2.7/multiprocessing/pool.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="393" column="0" selection-start-line="393" selection-start-column="0" selection-end-line="393" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="connections.py" pinned="false" current-in-tab="false">
+        <entry file="file:///usr/lib/python2.7/dist-packages/MySQLdb/connections.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="queues.py" pinned="false" current-in-tab="true">
+        <entry file="file:///usr/lib/python2.7/multiprocessing/queues.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="226">
+              <caret line="375" column="0" selection-start-line="375" selection-start-column="0" selection-end-line="375" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -112,23 +118,13 @@
       <file leaf-file-name="chat_migration_start.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chat_migration_start.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="56" selection-start-line="17" selection-start-column="56" selection-end-line="17" selection-end-column="56" />
+            <state relative-caret-position="375">
+              <caret line="27" column="71" selection-start-line="27" selection-start-column="71" selection-end-line="27" selection-end-column="71" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
-                <marker date="1499351030950" expanded="true" signature="570:620" ph="SELECT id,id... users" />
-                <marker date="1499351030950" expanded="true" signature="1179:1226" ph="SELECT messa... deleted_messages" />
+                <marker date="1501778077148" expanded="true" signature="570:620" ph="SELECT id,id... users" />
+                <marker date="1501778077148" expanded="true" signature="1176:1223" ph="SELECT messa... deleted_messages" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mod_ejabberd_offline_push.erl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mod_ejabberd_offline_push.erl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="579">
-              <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -136,8 +132,8 @@
       <file leaf-file-name="cms_data_migrations.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cms_data_migrations.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1170">
-              <caret line="6" column="16" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="16" />
+            <state relative-caret-position="540">
+              <caret line="39" column="67" selection-start-line="39" selection-start-column="22" selection-end-line="39" selection-end-column="67" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
                 <marker date="1501766072309" expanded="true" signature="1683:1742" ph="SELECT id,na... school_admin" />
@@ -158,7 +154,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chat_screen_creation.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="chat_screen_creation.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chat_screen_creation.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="15">
@@ -181,11 +177,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/chat_migration_start.py" />
-        <option value="$PROJECT_DIR$/chat_data_migration_v2_to_v3.py" />
-        <option value="$PROJECT_DIR$/ejabberd_user_creation_multi_processing.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/cms_data_migrations.py" />
+        <option value="$PROJECT_DIR$/chat_data_migration_v2_to_v3.py" />
+        <option value="$PROJECT_DIR$/chat_migration_start.py" />
+        <option value="$PROJECT_DIR$/ejabberd_user_creation_multi_processing.py" />
       </list>
     </option>
   </component>
@@ -227,7 +223,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
@@ -250,6 +245,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -900,7 +896,7 @@
       <module name="important_script" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ejabberd_user_creation_multi_processing.py" />
-      <option name="PARAMETERS" value="1" />
+      <option name="PARAMETERS" value="21" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
@@ -921,12 +917,13 @@
       <workItem from="1499340508908" duration="5527000" />
       <workItem from="1499424729581" duration="9764000" />
       <workItem from="1499611216997" duration="20000" />
-      <workItem from="1501764755040" duration="3750000" />
+      <workItem from="1501764755040" duration="8812000" />
+      <workItem from="1502306788197" duration="1669000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24093000" />
+    <option name="totallyTimeSpent" value="30824000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
@@ -938,24 +935,24 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.50278884" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988048" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4876161" sideWeight="0.49721116" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5417957" sideWeight="0.49721116" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24940239" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24940239" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Memory View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988048" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39628482" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40557274" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39628482" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -996,18 +993,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/ejabberd_user_creation_multi_processing.py</url>
-          <line>45</line>
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/ejabberd_user_creation_multi_processing.py</url>
-          <line>16</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="2" />
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1025,12 +1011,12 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#23#44#0" expanded="true" />
-            <marker date="1499351030906" expanded="true" signature="3330:3470" ph="insert into archive... " />
-            <marker date="1499351030906" expanded="true" signature="3752:3892" ph="insert into archive... " />
-            <marker date="1499351030906" expanded="true" signature="4171:4311" ph="insert into archive... " />
-            <marker date="1499351030906" expanded="true" signature="4546:4686" ph="insert into archive... " />
-            <marker date="1499351030906" expanded="true" signature="5220:5286" ph="SELECT fromJ... ofMessageArchive" />
-            <marker date="1499351030906" expanded="true" signature="5220:5376" ph="SELECT fromJ... ofMessageArchive" />
+            <marker date="1501778077092" expanded="true" signature="3327:3467" ph="insert into archive... " />
+            <marker date="1501778077092" expanded="true" signature="3749:3889" ph="insert into archive... " />
+            <marker date="1501778077092" expanded="true" signature="4168:4308" ph="insert into archive... " />
+            <marker date="1501778077092" expanded="true" signature="4543:4683" ph="insert into archive... " />
+            <marker date="1501778077092" expanded="true" signature="5217:5283" ph="SELECT fromJ... ofMessageArchive" />
+            <marker date="1501778077092" expanded="true" signature="5217:5373" ph="SELECT fromJ... ofMessageArchive" />
           </folding>
         </state>
       </provider>
@@ -1047,10 +1033,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#21#0" expanded="false" />
-            <marker date="1497246727620" expanded="true" signature="439:464" ph="SELECT id,na... users" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1067,8 +1049,8 @@
           <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-            <marker date="1499351030950" expanded="true" signature="570:620" ph="SELECT id,id... users" />
-            <marker date="1499351030950" expanded="true" signature="1179:1226" ph="SELECT messa... deleted_messages" />
+            <marker date="1501778077148" expanded="true" signature="570:620" ph="SELECT id,id... users" />
+            <marker date="1501778077148" expanded="true" signature="1176:1223" ph="SELECT messa... deleted_messages" />
           </folding>
         </state>
       </provider>
@@ -1100,12 +1082,12 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#23#44#0" expanded="true" />
-            <marker date="1499351030906" expanded="true" signature="3330:3470" ph="insert into archive... " />
-            <marker date="1499351030906" expanded="true" signature="3752:3892" ph="insert into archive... " />
-            <marker date="1499351030906" expanded="true" signature="4171:4311" ph="insert into archive... " />
-            <marker date="1499351030906" expanded="true" signature="4546:4686" ph="insert into archive... " />
-            <marker date="1499351030906" expanded="true" signature="5220:5286" ph="SELECT fromJ... ofMessageArchive" />
-            <marker date="1499351030906" expanded="true" signature="5220:5376" ph="SELECT fromJ... ofMessageArchive" />
+            <marker date="1501778077092" expanded="true" signature="3327:3467" ph="insert into archive... " />
+            <marker date="1501778077092" expanded="true" signature="3749:3889" ph="insert into archive... " />
+            <marker date="1501778077092" expanded="true" signature="4168:4308" ph="insert into archive... " />
+            <marker date="1501778077092" expanded="true" signature="4543:4683" ph="insert into archive... " />
+            <marker date="1501778077092" expanded="true" signature="5217:5283" ph="SELECT fromJ... ofMessageArchive" />
+            <marker date="1501778077092" expanded="true" signature="5217:5373" ph="SELECT fromJ... ofMessageArchive" />
           </folding>
         </state>
       </provider>
@@ -1114,10 +1096,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#21#0" expanded="false" />
-            <marker date="1497246727620" expanded="true" signature="439:464" ph="SELECT id,na... users" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1155,12 +1133,12 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#23#44#0" expanded="true" />
-            <marker date="1499351030906" expanded="true" signature="3330:3470" ph="insert into archive... " />
-            <marker date="1499351030906" expanded="true" signature="3752:3892" ph="insert into archive... " />
-            <marker date="1499351030906" expanded="true" signature="4171:4311" ph="insert into archive... " />
-            <marker date="1499351030906" expanded="true" signature="4546:4686" ph="insert into archive... " />
-            <marker date="1499351030906" expanded="true" signature="5220:5286" ph="SELECT fromJ... ofMessageArchive" />
-            <marker date="1499351030906" expanded="true" signature="5220:5376" ph="SELECT fromJ... ofMessageArchive" />
+            <marker date="1501778077092" expanded="true" signature="3327:3467" ph="insert into archive... " />
+            <marker date="1501778077092" expanded="true" signature="3749:3889" ph="insert into archive... " />
+            <marker date="1501778077092" expanded="true" signature="4168:4308" ph="insert into archive... " />
+            <marker date="1501778077092" expanded="true" signature="4543:4683" ph="insert into archive... " />
+            <marker date="1501778077092" expanded="true" signature="5217:5283" ph="SELECT fromJ... ofMessageArchive" />
+            <marker date="1501778077092" expanded="true" signature="5217:5373" ph="SELECT fromJ... ofMessageArchive" />
           </folding>
         </state>
       </provider>
@@ -1199,12 +1177,12 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#23#44#0" expanded="true" />
-            <marker date="1499351030906" expanded="true" signature="3330:3470" ph="insert into archive... " />
-            <marker date="1499351030906" expanded="true" signature="3752:3892" ph="insert into archive... " />
-            <marker date="1499351030906" expanded="true" signature="4171:4311" ph="insert into archive... " />
-            <marker date="1499351030906" expanded="true" signature="4546:4686" ph="insert into archive... " />
-            <marker date="1499351030906" expanded="true" signature="5220:5286" ph="SELECT fromJ... ofMessageArchive" />
-            <marker date="1499351030906" expanded="true" signature="5220:5376" ph="SELECT fromJ... ofMessageArchive" />
+            <marker date="1501778077092" expanded="true" signature="3327:3467" ph="insert into archive... " />
+            <marker date="1501778077092" expanded="true" signature="3749:3889" ph="insert into archive... " />
+            <marker date="1501778077092" expanded="true" signature="4168:4308" ph="insert into archive... " />
+            <marker date="1501778077092" expanded="true" signature="4543:4683" ph="insert into archive... " />
+            <marker date="1501778077092" expanded="true" signature="5217:5283" ph="SELECT fromJ... ofMessageArchive" />
+            <marker date="1501778077092" expanded="true" signature="5217:5373" ph="SELECT fromJ... ofMessageArchive" />
           </folding>
         </state>
       </provider>
@@ -1246,20 +1224,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/lib/python2.7/multiprocessing/pool.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4755">
-          <caret line="324" column="0" selection-start-line="324" selection-start-column="0" selection-end-line="324" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python2.7/multiprocessing/queues.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5430">
-          <caret line="375" column="0" selection-start-line="375" selection-start-column="0" selection-end-line="375" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/demo.py" />
     <entry file="file://$PROJECT_DIR$/demo_regex.py" />
     <entry file="file:///usr/lib/python2.7/dist-packages/MySQLdb/cursors.py">
@@ -1287,14 +1251,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
           <caret line="32" column="31" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python2.7/dist-packages/MySQLdb/connections.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1326,10 +1282,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="15" column="38" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#21#0" expanded="false" />
-            <marker date="1497246727620" expanded="true" signature="439:464" ph="SELECT id,na... users" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1360,7 +1312,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mod_ejabberd_offline_push.erl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="579">
+        <state relative-caret-position="615">
           <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
           <folding />
         </state>
@@ -1387,8 +1339,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cms_data_migrations.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1170">
-          <caret line="6" column="16" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="16" />
+        <state relative-caret-position="540">
+          <caret line="39" column="67" selection-start-line="39" selection-start-column="22" selection-end-line="39" selection-end-column="67" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
             <marker date="1501766072309" expanded="true" signature="1683:1742" ph="SELECT id,na... school_admin" />
@@ -1408,41 +1360,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ejabberd_user_creation_multi_processing.py">
+    <entry file="file://$PROJECT_DIR$/chat_migration_start.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        <state relative-caret-position="375">
+          <caret line="27" column="71" selection-start-line="27" selection-start-column="71" selection-end-line="27" selection-end-column="71" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-            <marker date="1501764986848" expanded="true" signature="1420:1498" ph="SELECT id,na... users" />
+            <marker date="1501778077148" expanded="true" signature="570:620" ph="SELECT id,id... users" />
+            <marker date="1501778077148" expanded="true" signature="1176:1223" ph="SELECT messa... deleted_messages" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chat_data_migration_v2_to_v3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="60" column="70" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="70" />
+        <state relative-caret-position="1710">
+          <caret line="126" column="65" selection-start-line="126" selection-start-column="65" selection-end-line="126" selection-end-column="65" />
           <folding>
             <element signature="e#23#44#0" expanded="true" />
-            <marker date="1499351030906" expanded="true" signature="3330:3470" ph="insert into archive... " />
-            <marker date="1499351030906" expanded="true" signature="3752:3892" ph="insert into archive... " />
-            <marker date="1499351030906" expanded="true" signature="4171:4311" ph="insert into archive... " />
-            <marker date="1499351030906" expanded="true" signature="4546:4686" ph="insert into archive... " />
-            <marker date="1499351030906" expanded="true" signature="5220:5286" ph="SELECT fromJ... ofMessageArchive" />
-            <marker date="1499351030906" expanded="true" signature="5220:5376" ph="SELECT fromJ... ofMessageArchive" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chat_migration_start.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="56" selection-start-line="17" selection-start-column="56" selection-end-line="17" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-            <marker date="1499351030950" expanded="true" signature="570:620" ph="SELECT id,id... users" />
-            <marker date="1499351030950" expanded="true" signature="1179:1226" ph="SELECT messa... deleted_messages" />
+            <marker date="1501778077092" expanded="true" signature="3327:3467" ph="insert into archive... " />
+            <marker date="1501778077092" expanded="true" signature="3749:3889" ph="insert into archive... " />
+            <marker date="1501778077092" expanded="true" signature="4168:4308" ph="insert into archive... " />
+            <marker date="1501778077092" expanded="true" signature="4543:4683" ph="insert into archive... " />
+            <marker date="1501778077092" expanded="true" signature="5217:5283" ph="SELECT fromJ... ofMessageArchive" />
+            <marker date="1501778077092" expanded="true" signature="5217:5373" ph="SELECT fromJ... ofMessageArchive" />
           </folding>
         </state>
       </provider>
@@ -1451,6 +1392,45 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/dist-packages/MySQLdb/connections.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ejabberd_user_creation_multi_processing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+            <marker date="1502308323027" expanded="true" signature="1421:1501" ph="SELECT id,na... users" />
+            <marker date="1502308323027" expanded="true" signature="1550:1577" ph="SELECT id,na... users" />
+            <marker date="1502308323027" expanded="true" signature="1550:1604" ph="SELECT id,na... users" />
+            <marker date="1502308323027" expanded="true" signature="1550:1605" ph="SELECT id,na... users" />
+            <marker date="1502308323027" expanded="true" signature="1550:1607" ph="SELECT id,na... users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/multiprocessing/pool.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="393" column="0" selection-start-line="393" selection-start-column="0" selection-end-line="393" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/multiprocessing/queues.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="375" column="0" selection-start-line="375" selection-start-column="0" selection-end-line="375" selection-end-column="0" />
           <folding />
         </state>
       </provider>

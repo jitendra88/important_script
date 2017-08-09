@@ -8,7 +8,7 @@ TOTAL_NO_PROCESS = 1
 con = mdb.connect('myu-v3-prod.c03pbdmxnxpo.eu-west-1.rds.amazonaws.com', 'myu_root', 'myu_root123root*', 'myuv3')
 cur = con.cursor()
 
-PAGINATION_LIMIT = 30000
+PAGINATION_LIMIT = 5000
 server_url = 'http://chat.myu.co:4560'
 EJABBERD_XMLRPC_LOGIN = {'user': 'admin', 'server': 'localhost', 'password': 'racers23'}
 
@@ -44,8 +44,9 @@ if page:
 
 def ejabberd_user_register(page):
     start = (page - 1) * PAGINATION_LIMIT;
-    cur.execute("SELECT id,name FROM users ORDER BY id DESC limit " + str(
-        start) + " ," + str(PAGINATION_LIMIT) + "")
+    # cur.execute("SELECT id,name FROM users ORDER BY id DESC limit " + str(
+    #     start) + " ," + str(PAGINATION_LIMIT) + "")
+    cur.execute("SELECT id,name FROM users  ORDER BY id DESC limit 2000 ")
 
     for row in cur.fetchall():
         print "user register ejabberd username id :::::::::::::" + str(row[0])
